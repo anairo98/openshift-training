@@ -58,4 +58,7 @@ markdown_extensions:
   - pymdownx.superfences
 
 
-
+extra: 
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/oriana-schwickrath-03a906200/
