@@ -1,0 +1,61 @@
+site_name: OpenShift Training
+copyright: Copyright &copy; Oriana Schwickrath 2025
+site_url: https://trainings.com
+theme:
+  name: material
+  favicon: assets/images/OpenShift_Logo.png
+  icon: 
+      admonition:
+        note: octicons/tag-16
+  features:
+    - content.code.copy
+  font:
+    text: Merriweather Sans # Google Font (Schriftart
+    code: Red Hat Mono # Google Font (Code Schriftart)
+  palette: 
+    # Palette toggle for light mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Dark mode
+      primary: deep purple
+      accent: cyan
+
+    # Palette toggle for dark mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+      primary: light green
+      accent: teal
+
+nav:
+  - "Home": index.md
+  - "1. Container Basics": 
+    - kubernetes-basics.md
+    - "First Hands-On Lab": kubernetes-core/first-lab.md
+  - "2. Kubernetes": 
+    - orchestration.md
+    - "Second Hands-On Lab": kubernetes-core/second-lab.md
+  - "3. Enterprise Solutions":
+    - enterprise-solutions.md
+    - "Third Hands-On Lab": kubernetes-core/third-lab.md
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+
+
