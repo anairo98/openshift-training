@@ -38,7 +38,7 @@ theme:
 
 nav:
   - "Home": index.md
-  - "First Steps": First Steps.md
+  - "Use Case": UseCase.md
 
 markdown_extensions:
   - attr_list
