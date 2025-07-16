@@ -1,4 +1,4 @@
-# Welcome to the world of Kubernetes
+# Welcome to the world of OpenShift 
 
 This guide is designed to help you get started with Red Hat OpenShift. Whether you're new to OpenShift or looking to solidify your foundational knowledge, this training will provide you with the basic concepts and hands-on experience needed to start to utilize Kubernetes effectively.
 
