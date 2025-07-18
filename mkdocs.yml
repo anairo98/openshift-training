@@ -39,6 +39,7 @@ theme:
 nav:
   - "Home": index.md
   - "Use Case": UseCase.md
+  - "Session 1": Session1.md
 
 markdown_extensions:
   - attr_list
