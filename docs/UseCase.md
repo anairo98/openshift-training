@@ -4,13 +4,13 @@ In this Hands-On-Labs, we deploy an *e-commerce application*, which is based on 
 
 The deployment manifests are modified so that they could be deployed on an OpenShift Cluster. The User Interface of **"Online Boutique"** looks like this:
 
-![Online Boutique Interface](imgages/boutique_interface.png)
+![Online Boutique Interface](images/boutique_interface.png)
 
 ### Architecture
 
 On the main page of the Online Boutique, a frontend service forwards the requests to the 10 corresponding backend services, as shown in this architectur image: 
 
-![Architecture of microservices](imgages/architecture-diagram.png)
+![Architecture of microservices](images/architecture-diagram.png)
 
 All these 11 microservices are communicating over gRPC protocol. 
 
