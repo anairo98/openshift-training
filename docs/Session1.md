@@ -4,28 +4,47 @@
 
 ### Task 1
 1. Create your own Project Namespace
-*Picture*
+
+![Create Project](images/create_project.png)
+
 2. Create the frontend Deployment by importing the yaml template
-	1. Go to the Github Repository and navigate over the e-commerce folder to the frontend and then to the deployment.yml 
-	2. Copy the content of the deployment.yml 
-	3. Paste the deployment.yml in OpenShift into the "Import Yaml" field
-		*Picture*
-	4. Click on Create and you will create the frontend deployment
-		*Picture*
-> Go to *Topology* in Openshift and Check on your Pod
-3. Find out what is the problem with your Pod!? 
+	1. Go to the [Github Repository](https://github.com/anairo98/openshift-training/tree/main) and navigate over the **e-commerce** folder to the **frontend** folder and then to the **deployment.yml** 
+	2. Copy the content of the **deployment.yml** 
+	3. Switch to the Openshift Console and paste the content into the *Import Yaml* field
+		
+    ![Import YAML](images/import_yml.png)
+
+	4. Click on **Create** and you will create the *frontend* deployment
+    5. Go to **Topology** in Openshift Console and check on your newly created Pod
+
+    ![Issue with Frontend](images/frontend_not_running.png)
+
+3. There is some problem with your pod, it is not running! Find out what the problem is about!?
+
+!!! note "If you need help!"
+    If you cannot solve the problem, switch to the **Solutions for Troubleshooting** chapter on this website (scroll down :winking_face:) 
+
 4. When you fixed the Problem, you maybe need to scale down and after that scale up your Pod again (so the changes are getting activated):
-*Picture scale_frontend.png*
+
+![Scale Frontend](images/scale_frontend.png)
+
 5. Give it a moment and wait until the Pod is running!
-*Picture running_frontend.png*
+
+![Running Frontend](images/running_frontend.png)
+
+---
 
 ### Task 2
-1. Create a Service, which abstracts the frontend Deployment
-2. Go to the *Administrator* view and then you can find services under the *Networking* section
-*Picture services.png*
-3. Click on *Create Service*
+1. Create a Service, which abstracts the *frontend* Deployment
+2. Go to the **Administrator** view and search for **services** under the **Networking** section
+
+![Services](images/services.png)
+
+3. Click on **Create Service**
 4. Enter all necessary Informations 
-> If you are unsure how to enter it, have a look at the following yml file: 
+
+!!! tip
+    If you are unsure how to enter it, have a look at the following yml file: 
 
 ```yaml
 apiVersion: v1
@@ -44,50 +63,78 @@ spec:
     targetPort: 8080
 ```
 
-5. Verify if the Service is linked to the prior created frontend Pod 
+5. Verify if the Service is linked to the prior created *frontend* Pod 
 	1. Click on the *frontend* Service
 	2. Click on the *Pods* section:
-	*Picture service_pod.png*
-	3. You can also verify by going back to the *Topology* section and click on the *frontend* Pod. There is now under the *Resources* section also the *frontend* Service linked
-*Picture service_pod2.png*
 
+    ![Service Pod](images/service_pod.png)
+
+	3. You can also verify by going back to the **Topology** section and click on the *frontend* Pod. There is now under the **Resources** section also the *frontend* Service linked
+
+    ![Service Pod 2](images/service_pod2.png)
+
+---
 
 ### Task 3 
-- Route anlegen über Openshift direkt (nicht über manifest file)
-	- Die tls section im manifestfile gibt es damit auch http traffic immer auf https weitergeleitet wird, ist einfach sicherer
-1. Go to *Administrator* and click on *Routes* under the *Networking* section and click on *Create Route*
-*Picture create_route.png*
-2. Give the Route a name (*frontend*)
-3. Select the correct *frontend* Service, which we created in Task 2
-4. Select the correct Port (Service Port) --> TargetPort (Port on the Container)
-> Only fill out the fields which are necessary (marked with a red asterisk)
-5. Click on *Create*
-*Picture create.png*
+Create a Route by using the OpenShift UI  (not by using the manifest files given in the Github)
+
+1. Go to **Administrator** view and click on **Routes** under the **Networking** section and click on **Create Route**
+
+![Create Route](images/create_route.png)
+
+2. Give the Route a name: *frontend*
+3. Select the correct *frontend* Service, which we created in **Task 2**
+4. Select the correct *Port* (Service Port) --> *TargetPort* (Port on the Container)
+
+!!! note
+    Only fill out the fields which are necessary (marked with a red asterisk)
+
+5. Click on **Create**
+
+![Create](images/create.png)
+
 6. Give it a second 
-7. verify the Route: Go back to the *Topology* and click on the Route sign on the Pod 
-*Picture verify_route.png*
+7. verify the Route: Go back to the **Topology** and click on the Route sign on the right hand side of the Pod 
 
-> You will see that the frontend is loading but you get an *500 Internal Server Error*. 
+![Verify Route](images/verify_route.png)
 
-!!! note 
-    You get the *Internal Server Error*, because you only have the frontend and all of the backend is still missing
-    *Picture inetrnal_server_error.png*
 
+!!! info
+    You will see that the frontend is loading but you get an *500 Internal Server Error*. The *Internal Server Error* occurs, because you only have the frontend deployed and all of the backend is still missing. 
+    So don't worry, we will do this together step by step :smiling_face_with_sunglasses:
+
+![Internal Server Error](images/internal_server_error.png)
+
+
+*** 
 
 ## Solutions for Troubleshooting
 
 ### Solution of Task 1
 
-> Frontend Pod was not created
+Frontend Pod was not created, but why?!
+
 1. Check the Error message
-	*Picture*
-2. Go to the Deployments (hint you can find it, if you switch to the administrator and under *Workloads*)
-3. Check the ReplicaSet of the frontend Deployment 
-	*Picture*
-4. Check the *Events* of the *Replicaset* 
-	*Picture - replicaset_events*
-5. You got it! You are missing the expected Service Account
-6. Create the missing *frontend*- ServiceAccount
-*Picture - create_serviceaccount*
-> As you can see there are already three serviceaccounts. These serviceaccounts are the default Serviceaccounts. For the frontend Deployment we were assigning the specific *frontend* Serviceaccount. So lets create it: 
-*Picture create_serviceaccount2.png*
+
+![Frontend Not Running](images/frontend_not_running.png)
+
+2. Go to the **Deployments** (hint you can find it, if you switch to the **Administrator** and under **Workloads**)
+3. Check the **ReplicaSet** of the *frontend* Deployment 
+
+![RepliaSet](images/replicaset_frontend.png)
+
+4. Check the **Events** of the *Replicaset*
+
+![Events ReplicaSet](images/replicaset_events.png)
+
+5. You got it! You are missing the expected *Service Account*
+6. Create the missing *frontend* Service Account
+
+![Service Account](images/create_serviceaccount.png)
+
+> As you can see there are already three Service Accounts. These serviceaccounts are the default Service Accounts. But for our created *frontend* deployment we do not want to use one of the default once. 
+
+![Create SA](images/create_serviceaccount2.png)
+
+!!! hint
+    It is important that you name the ServiceAccount exactly as mentioned in you Deployment.yml file
