@@ -2,7 +2,7 @@
 
 ## Tasks
 
-### Task 1
+### Task 1: Deployment
 1. Create your own Namespace (like your own project)
 
     ![Create Project](images/create_project.png)
@@ -34,7 +34,7 @@
 
 ---
 
-### Task 2
+### Task 2: Service
 1. Create a Service, which abstracts the *frontend* Deployment
 2. Go to the **Administrator** view and search for **services** under the **Networking** section
 
@@ -75,7 +75,7 @@
 
 ---
 
-### Task 3 
+### Task 3: Route
 Create a Route by using the OpenShift UI  (not by using the manifest files given in the Github)
 
 1. Go to **Administrator** view and click on **Routes** under the **Networking** section and click on the **Create Route** button
@@ -101,12 +101,67 @@ Create a Route by using the OpenShift UI  (not by using the manifest files given
 
 !!! info
     You will see that the frontend is loading but you get an *500 Internal Server Error* if you open the website. The *Internal Server Error* occurs, because you only have the frontend deployed and all of the backend is still missing. 
-    So don't worry, we will do this together step by step :smiling_face_with_halo:
+    So don't worry, we will do this together step by step!
 
 ![Internal Server Error](images/internal_server_error.png)
 
+---
 
-*** 
+### Task 4: Scaling
+Scaling the Pod
+
+1. Scale down the Pod to zero 
+    
+    ![Scale Down](images/scale_down.png)
+
+2. Check the Route (Link) to the website - The website should not be reachable
+
+    ![App not available](images/app_not_available.png)
+
+3. Scale the Pod up again and verify the link to the website 
+
+!!! info
+    The frontend should be reachable again
+
+--- 
+
+### Task 5: Microservices-Architecture
+Create a Microservice Architecture by creating multiple other deployments and connect those by connecting the services
+
+1. Go into the [Github Repository](https://github.com/anairo98/openshift-training/tree/main/e-commerce)
+2. Lets start with the *Ad-Service*. You can find the Yaml files under the folder **adservice**
+3. Start with the *serviceaccount.yml*
+4. Go to the OpenShift Console and navigate to **Administrator** - **User Management** - **ServiceAccounts** 
+5. Create a Service Account with the name: *adservice* in your created namespace (of Task 1)
+6. Now it is time to create the Deployment, copy the *deployment.yml* of the *adservice* from the GitHub Repository
+7. Go back to the OpenShift Console and navigate to: **Administrator** - **Workloads** - **Deployments**
+8. Click on **Create Deployment** 
+9. Click on **YAML view**, delete the default content and paste inside your copied *deployment.yml*
+
+    ![Deployment via Yaml](images/deployment_via_yaml.png)
+
+10. Lastly create the regarding Service of the *adservice* Deployment
+11. Copy the *service.yml* from the **adservice** folder of the GitHub Repository and switch back to the OpenShift Console
+12. Create the service in OpenShift by using the *service.yml* like we did with the *deployment.yml* of the **adservice** 
+
+    !!! info
+        You can verify, if you go to the **Topology** and check if your Pod named *adservice* with the expecting Service is present
+
+13. Now create the *cartservice*, the *checkoutservice* and the *currencyservice* by your own
+
+!!! hint
+    For the three other microservices you can use the whole *manifest.yml* file and create the whole microservices (including ServiceAccount, Deployment and Service) all at once. For that navigate to **Developer** - **+Add** - **Import YAML** and paste in the whole manifest file. This saves time :rocket: 
+
+![Import Manifest File](images/import_manifest.png)
+
+
+
+
+
+
+
+
+
 
 ## Solutions for Troubleshooting
 
