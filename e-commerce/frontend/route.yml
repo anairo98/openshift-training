@@ -9,6 +9,6 @@ spec:
     name: frontend
   port:
     targetPort: http
-  tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
+  tls: # Activate Secure Route (Https)
+    termination: edge # (TLS- Encyrption ends on the edge of the cluster - Openshift-Router - Router encrypts and traffic gets encrypted forwarded to internal pods)
+    insecureEdgeTerminationPolicy: Redirect # Http traffic gets forwarded to https)
