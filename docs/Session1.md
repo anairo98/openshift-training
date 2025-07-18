@@ -27,7 +27,7 @@
 4. Enter all necessary Informations 
 > If you are unsure how to enter it, have a look at the following yml file: 
 
-``` e-commerce/frontend/service.yml
+```yaml
 apiVersion: v1
 kind: Service
 metadata:

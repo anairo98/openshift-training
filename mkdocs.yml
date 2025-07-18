@@ -43,6 +43,8 @@ nav:
 
 markdown_extensions:
   - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
   - admonition
   - footnotes
   - pymdownx.emoji:
@@ -55,6 +57,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
   - attr_list
   - pymdownx.mark
   - admonition
