@@ -59,6 +59,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.lightbox
   - pymdownx.arithmatex:
       generic: true
   - attr_list
