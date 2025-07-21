@@ -34,7 +34,7 @@
 
 ---
 
-### Task 2: Service
+### Task 2: Services
 1. Create a Service, which abstracts the *frontend* Deployment
 2. Go to the **Administrator** view and search for **services** under the **Networking** section
 
@@ -75,7 +75,7 @@
 
 ---
 
-### Task 3: Route
+### Task 3: Routing
 Create a Route by using the OpenShift UI  (not by using the manifest files given in the Github)
 
 1. Go to **Administrator** view and click on **Routes** under the **Networking** section and click on the **Create Route** button
@@ -140,7 +140,7 @@ Create a Microservice Architecture by creating multiple other deployments and co
 
     ![Deployment via Yaml](images/deployment_via_yaml.png)
 
-10. Lastly create the regarding Service of the *adservice* Deployment
+10. Lastly, create the regarding Service of the *adservice* Deployment
 11. Copy the *service.yml* from the **adservice** folder of the GitHub Repository and switch back to the OpenShift Console
 12. Create the service in OpenShift by using the *service.yml* like we did with the *deployment.yml* of the **adservice** 
 
