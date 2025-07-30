@@ -3,7 +3,9 @@ copyright: Copyright &copy; Oriana Schwickrath 2025
 site_url: https://trainings.com
 theme:
   name: material
-  logo: img/OpenShift_Logo.jpeg
+  logo: assets/images/openshift_logo.jpeg
+  favicon: assets/images/openshift_logo.jpeg
+  language: en
   icon: 
       admonition:
         note: octicons/tag-16
