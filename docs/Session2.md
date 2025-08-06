@@ -126,36 +126,36 @@
 
     5. Now create the **paymentservice** service on the CLI using an imperative way. Use the following commands
 
-        ```bash
-        oc create service clusterip paymentservice --tcp=50051:50051
-        ```
+            ```bash
+            oc create service clusterip paymentservice --tcp=50051:50051
+            ```
     6. The Service still needs to be connected to the Deployment and we would like to name the service endpoint
 
-        ```bash
-        oc edit service paymentservice
-        ```
+            ```bash
+            oc edit service paymentservice
+            ```
 
-        ```yaml
-        apiVersion: v1
-        kind: Service
-        metadata:
-        name: paymentservice
-        labels:
-            app: paymentservice
-        spec:
-        type: ClusterIP             
-        selector:
-            app: paymentservice
-        ports:
-        - name: grpc
-            port: 50051
-            targetPort: 50051
-        ```
+            ```yaml
+            apiVersion: v1
+            kind: Service
+            metadata:
+            name: paymentservice
+            labels:
+                app: paymentservice
+            spec:
+            type: ClusterIP             
+            selector:
+                app: paymentservice
+            ports:
+            - name: grpc
+                port: 50051
+                targetPort: 50051
+            ```
 
         !!! note
             Add the missing parts. 
 
-9. Exit the Command Line and use the OpenShift UI to verify in the Topology that everything was created succesfully! Should look like this: 
+9. Exit the Command Line and use the OpenShift UI to verify in the Topology that everything was created succesfully! It should look like this: 
 
     ![Topology](images/session2/topology.png)
 
@@ -175,10 +175,10 @@
 3. Find out about the problem and troubleshoot! 
 
     !!! hint
-        If you really cannot find the solution by your own, you can have a look at the solution section.
+        If you really cannot find the solution by your own, you can have a look at the solution section. But first please try it out!
 
     !!! success
-        After you fixed the problem, you can validate that it works now.
+        After you fixed the problem, you can validate that it works: 
 
 4. Navigate to the topology and check out your changes
 
@@ -200,7 +200,7 @@
 
     ![Recommendationservice](images/session2/recommendationservice.png)
 
-    !!! danger
+    !!! danger "Failure"
         Does it look like on the screenshot? No?! Then there is probably something wrong.
 
 4. Troubleshoot!
@@ -221,7 +221,7 @@
     !!! failure
         There is an error because the **frontend** cannot reach the host called **productcatalogservice** 
 
-3. Create the **productcatalogservice** microservice (you can find the manifest.yml in the Github Repository)
+3. Create the **productcatalogservice** microservice (you can find the *manifest.yml* in the Github Repository)
 4. After you did that, ensure the **loadgenerator** pod is running again. Check if the **init-container** finished and if the **main** container is running 
 
     ![Running Loadgenerator](images/session2/running_loadgenerator.png)
@@ -237,7 +237,7 @@
 3. Navigate to the service of the **shipping** deployment, because the service provides an static endpoint for the **shipping** deployment
 
     !!! Warning 
-        Seems like the IP-Adresse is the right one, but the Port of the Service is not 50000, but 50051! Here is a Port mismatch!
+        Seems like the IP-addresse is the right one, but the Port of the Service is not 50000, but 50051! Here is a Port mismatch!
 
 4. Fix This!
 5. Navigate to the **frontend** deployment and check out the environment variables, which are set for the **frontend** deployment
