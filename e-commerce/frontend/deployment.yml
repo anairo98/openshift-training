@@ -59,7 +59,7 @@ spec:
           - name: RECOMMENDATION_SERVICE_ADDR
             value: "recommendationservice:8181"
           - name: SHIPPING_SERVICE_ADDR
-            value: "shippingservice:50051"
+            value: "shippingservice:50000"
           - name: CHECKOUT_SERVICE_ADDR
             value: "checkoutservice:5050"
           - name: AD_SERVICE_ADDR

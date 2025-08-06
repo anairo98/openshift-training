@@ -44,6 +44,7 @@ nav:
   - "Home": index.md
   - "Use Case": UseCase.md
   - "Session 1": Session1.md
+  - "Session 2": Session2.md 
 
 markdown_extensions:
   - attr_list
