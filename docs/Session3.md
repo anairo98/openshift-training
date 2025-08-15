@@ -11,11 +11,14 @@ Please recreate the environment from session 2
 
 To recap your knowledge until now. You should be able to answer the following questions: 
 
+[Quiz Link](https://forms.office.com/Pages/ResponsePage.aspx?id=ZGZljjZfW0qVTMVAX9KSBjhzaJv-m0hJoQL2QDQKeitUNkVMR1BLNDJMR0cyNTBQMEQ5QVdFMkNWOC4u)
+
 1. What is the main purpose of a Deployment?
     1. To expose services to the internet
     2. To manage the lifecycle of Pods and ensure desired state
     3. To store secrets and configuration data
     4. To monitor cluster health
+
 
 2. What does a ServiceAccount provide in Kubernetes?
     1. A way to expose services externally
@@ -23,11 +26,13 @@ To recap your knowledge until now. You should be able to answer the following qu
     3. An identity for processes running in Pods to interact with the API
     4. A configuration for persistent storage
 
+
 3. What is the role of a ReplicaSet?
     1. To manage the number of running Pods
     2. To route traffic between services
     3. To store container images
     4. To define access control policies
+
 
 4. What is an Operator in OpenShift?
     1. A built-in monitoring tool for Pods
@@ -35,13 +40,16 @@ To recap your knowledge until now. You should be able to answer the following qu
     3. A user role with elevated permissions
     4. A network policy for routing traffic
 
+
 5. What is the key difference between a Kubernetes Service and an OpenShift Route?
     1. Services handle internal traffic only, while Routes handle external traffic exclusively
     2. Services define how Pods are accessed within the cluster, while Routes provide external HTTP/HTTPS access to Services using OpenShift’s routing layer
     3. Services are used for DNS resolution, while Routes manage persistent storage
     4. Services and Routes both expose applications externally, but Routes are required for TCP traffic
 
+
 6. On which Port does the *checkout* Pod run? 
+
 
 7. What is the Label of the *adservice* Service?
 
