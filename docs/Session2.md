@@ -160,52 +160,6 @@
     ![Topology](images/session2/topology.png)
 
 
-
-### Task 3: Troubleshooting 
-
-1. Deploy the **shippingservice** by using the **manifest.yml** 
-2. Check out the Boutique webapp and ensure the service is successfully bound to the applications frontend
-    1. Enter the *shopping cart* (the frontend needs the *shippingservice* as well as the *cartservice* to show the *shopping cart* informations)
-
-        ![Failed Shoppingcart](images/session2/failed_shipping.png)
-
-        !!! failure
-            Seems like the **frontend** service cannot build up a connection to the **shipping** service
-
-3. Find out about the problem and troubleshoot! 
-
-    !!! hint
-        If you really cannot find the solution by your own, you can have a look at the solution section. But first please try it out!
-
-    !!! success
-        After you fixed the problem, you can validate that it works: 
-
-4. Navigate to the topology and check out your changes
-
-    1. Click on the route and then in the *Boutique Shop* on the *Shoppingcart* symbol
-    2. The **frontend** should be able to connect to the **shipping** service. 
-    3. It should look like this: 
-
-        ![Empty Shoppingcard](images/session2/empty_shoppingcard.png)
-
-    !!! hint
-        Maybe it is neccessary to empty the cache of your browser!
-
-
-### Task 4: Troubleshooting 
-
-1. Create the **recommendationservice** Deployment
-2. Create the **recommendation** Service
-3. Ensure the Deployment and the Service are connected together 
-
-    ![Recommendationservice](images/session2/recommendationservice.png)
-
-    !!! danger "Failure"
-        Does it look like on the screenshot? No?! Then there is probably something wrong.
-
-4. Troubleshoot!
-
-
 ## Solutions
 
 ### Solution Task 1
@@ -228,40 +182,3 @@
 
     !!! success
         If everything is running you are doing fine and you can go back to the task 1
-
-
-### Solution Task 3
-
-1. The error message says that the **frontend** could not establish a connection to **172.31.128.46:50000**
-2. Check if the IP and the Port is the correct one of the **shipping** service
-3. Navigate to the service of the **shipping** deployment, because the service provides an static endpoint for the **shipping** deployment
-
-    !!! Warning 
-        Seems like the IP-addresse is the right one, but the Port of the Service is not 50000, but 50051! Here is a Port mismatch!
-
-4. Fix This!
-5. Navigate to the **frontend** deployment and check out the environment variables, which are set for the **frontend** deployment
-
-    ![Environment Variables](images/session2/deployment_env.png)
-
-    1. The port is wrong
-    2. Correct the port and click on *save* 
-
-    !!! tip 
-        Wait a bit... The old pod of the **frontend** gets deleted and a new pod with the updated configs and environment variables comes up
-
-    
-### Solutions Task 4
-
-!!! info
-    Deployments and Services are connected to each other by using labels 
-
-1. Check the label, which is assigned to the **recommendation** deployment
-2. Compare this label with the used selector in the **recommendation** service 
-3. Correct the selector in the **recommendation** service to match the label
-4. Now, ensure again if the Deployment is bound to the Service
-
-
-
-
-
