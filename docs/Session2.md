@@ -1,4 +1,4 @@
-# Second Hands-On Lab
+# 2. Hands-On Lab
 
 ## Tasks
 
