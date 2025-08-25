@@ -15,7 +15,7 @@
         - image: REFRENCE-TO-IMAGESTREAM:TAG
 
     !!! hint
-        You can create the deployment by using the survey or by using the YAML input field. If you would like to use the YAML input, it can be helpful to reference the Kubernetes documentation: [Deployments in Kubernetes](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+        You can create the Deployment by using the survey or by using the YAML input field. If you would like to use the YAML input, it can be helpful to reference the Kubernetes documentation: [Deployments in Kubernetes](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
 3. Create a Service names *nginx-unprivileged* of the Deployment
 
@@ -29,4 +29,4 @@
     ![Welcome to NGINX](images/session4/welcome_nginx.png)
 
 
-### Task 2: 
+### Task 2: Deploy from Containerfile 
