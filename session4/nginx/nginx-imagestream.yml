@@ -10,3 +10,5 @@ spec:
       name: quay.io/nginx/nginx-unprivileged:latest
     importPolicy:
       scheduled: true
+    referencePolicy:
+      type: Source
