@@ -80,8 +80,10 @@ To recap your knowledge until now. You should be able to answer the following qu
     ![Tagged image](images/session4/tagged_image.png)
 
 5. Create a Deployment of the *python-app*, which uses the newly tagged image of the ImageStream 
+    - containerPort: 8080
+    - label: app=python
 
-6. Create a Service of the *python-app* Deployment
+6. Create a Service of the *python-app* Deployment 
 
     !!! hint
         Keep in mind, that you need to set the correct *label* and *targetPort*
@@ -102,7 +104,13 @@ The application has already defined an endpoint **/metrics** in the container fi
 
 1. Make this Endpoint of the *python-app* accessible from inside and outside the cluster (Create service and route). Depending on the names you gave, it should like similar to this:
 
+    !!! hint
+        You already have created the Deployment, a Service and a Route, which listens on Port 8080. 
+        Now you should create a Service and a Route to the same Deployment but to the endpoint on port **8000** 
+
     ![python-prometheus-accessible](images/session4/python_prometheus-accessible.png)
+
+> Now we can start to deploy the Prometheus server:
 
 2. Create a ConfigMap, which should be consumed from the Prometheus server (manifest file can be found under the **session4/prometheus/** folder in the GitHub)
 
