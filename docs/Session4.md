@@ -2,7 +2,41 @@
 
 ## Tasks
 
-### Task 0: Recap 
+### Task 0: Recap Quiz 
+
+To recap your knowledge until now. You should be able to answer the following questions. You can access the Quiz under the following link: 
+
+[Recap Quiz](https://forms.office.com/Pages/ResponsePage.aspx?id=ZGZljjZfW0qVTMVAX9KSBjhzaJv-m0hJoQL2QDQKeitUQTdUVzhLQ1RPT1RGNEtZSjhXSlQxWEU4Wi4u)
+
+1. How does a Kubernetes Service in OpenShift know which Pods to route traffic to?
+    1. It uses the Pod's IP address directly
+    2. It matches the Pod's labels with its selector
+    3. It queries the Deployment for Pod information
+    4. It uses the container image name as a reference
+
+2. What happens if a Deployment in OpenShift references an image that does not exist in the ImageStream?
+    1. The Deployment will automatically build the image
+    2. The Pod will start but fail during runtime
+    3. The Pod will fail to start due to ImagePull errors
+    4. OpenShift will fallback to a default image
+
+3. Which of the following best describes the role of an ImageStream in OpenShift 
+    1. It stores container images in the internal registry
+    2. It defines the build strategy for applications
+    3. It acts as a reference point for image versions and triggers
+    4. It manages network access between Pods 
+
+4. Which of the following statements about Deployments in OpenShift is true?
+    1. A Deployment directly manages Pods without ReplicaSets 
+    2. A Deployment must always be paired with a BuildConfig
+    3. A Deplyoment can be triggered by changes in an ImageStream
+    4. A Deployment cannot be scaled manually 
+
+5. In OpenShift, what is the correct relationship between a Route and a Service?
+    1. A Route exposes a Service, which then routes traffic to matching Pods
+    2. A Route exposes a Deployment directly to external traffic
+    3. A Route forwards to a Pod based on its IP address
+    4. A Route must reference an ImageStream to function correctly 
 
 ### Task 1: ImageStreams and Deployment
 
