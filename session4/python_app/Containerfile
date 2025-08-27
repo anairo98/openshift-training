@@ -12,6 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose port (adjust if needed)
 EXPOSE 8080
+EXPOSE 8000 # Prometheus-metrics 
 
 # Run the application
 CMD ["python", "app.py"]

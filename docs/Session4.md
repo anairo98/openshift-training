@@ -30,3 +30,31 @@
 
 
 ### Task 2: Deploy from Containerfile 
+
+1. Create a ImageStream 
+2. Create a BuildConfig by using the *session4/python_app/buildconfig.yml* file
+
+    !!! hint
+        You need to adjust some of the fields in the BuildConfig. 
+
+3. Start a Build 
+4. Verify that the Image is tagged to your created ImageStream 
+
+    ![Tagged image](images/session4/tagged_image.png)
+
+5. Create a Deployment of the *python-app*, which uses the newly tagged image of the ImageStream 
+
+6. Create a Service of the *python-app* Deployment
+
+    !!! hint
+        Keep in mind, that you need to set the correct *label* and *targetPort*
+
+7. Create a Route to access the *python-app* also from outside the cluster
+
+    !!! success
+        If everything works correctly, you should see the following message. 
+
+    ![python-app](images/session4/python_app_output.png)
+
+
+### Task 3: You can do it all by yourself! 
