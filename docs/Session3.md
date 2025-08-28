@@ -94,3 +94,36 @@ To recap your knowledge until now. You should be able to answer the following qu
         Does it look like on the screenshot? No?! Then there is probably something wrong.
 
 4. Troubleshoot!
+
+## Solutions
+
+### Solution Task 1
+
+1. The error message says that the **frontend** could not establish a connection to **172.31.128.46:50000**
+2. Check if the IP and the Port is the correct one of the **shipping** service
+3. Navigate to the service of the **shipping** deployment, because the service provides an static endpoint for the **shipping** deployment
+
+    !!! Warning 
+        Seems like the IP-addresse is the right one, but the Port of the Service is not 50000, but 50051! Here is a Port mismatch!
+
+4. Fix This!
+5. Navigate to the **frontend** deployment and check out the environment variables, which are set for the **frontend** deployment
+
+    ![Environment Variables](images/session2/deployment_env.png)
+
+    1. The port is wrong
+    2. Correct the port and click on *save* 
+
+    !!! tip 
+        Wait a bit... The old pod of the **frontend** gets deleted and a new pod with the updated configs and environment variables comes up
+
+    
+### Solutions Task 2
+
+!!! info
+    Deployments and Services are connected to each other by using labels 
+
+1. Check the label, which is assigned to the **recommendation** deployment
+2. Compare this label with the used selector in the **recommendation** service 
+3. Correct the selector in the **recommendation** service to match the label
+4. Now, ensure again if the Deployment is bound to the Service
