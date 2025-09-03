@@ -21,12 +21,9 @@ spec:
       volumes:
         - name: databasefolder
           emptyDir: {}
-        - name: initdb
-          configMap:
-            name: wealthapp
       initContainers:
         - name: init-db
-          image: image-registry.openshift-image-registry.svc:5000/wealthapp/mariadb:10.3redhat
+          image: image-registry.openshift-image-registry.svc:5000/wealthapp/database:latest
           command: ["/bin/sh", "-c"]
           args:
             - |
@@ -39,9 +36,6 @@ spec:
           volumeMounts:
             - name: databasefolder
               mountPath: /var/lib/mysql/data
-            - name: initdb
-              mountPath: /init_db.sql
-              subPath: init_db.sql
           env:
             - name: MYSQL_USER
               valueFrom:
@@ -64,7 +58,7 @@ spec:
                   name: wealthapp
                   key: DB_PASSWORD
       containers:
-        - image: image-registry.openshift-image-registry.svc:5000/wealthapp/mariadb:10.3redhat
+        - image: image-registry.openshift-image-registry.svc:5000/wealthapp/database:latest
           name: mariadb
           resources: {}
           volumeMounts:

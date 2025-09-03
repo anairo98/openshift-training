@@ -3,6 +3,12 @@ import cgi
 #import sqlite3
 import mysql.connector
 import os
+if (!os.environ['DB_HOST'] and
+    !os.environ['DB_USERNAME'] and
+    !os.environ['DB_PASSWORD'] and
+    !os.environ['DB_DATABASE']):
+   print("Please provide DB_HOST, DB_USERNAME, DB_PASSWORD and DB_DATABASE as environment variables!")
+   exit(2)
 
 db = mysql.connector.connect(
     host=os.environ['DB_HOST'],

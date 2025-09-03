@@ -10,7 +10,14 @@ print("<body>\n")
 print("<h1>Customer Database Access</h1>\n")
 
 api_host = os.getenv("API_HOST")
+if ! api_host:
+  print("Please provide API_HOST and API_PORT as environment variable!")
+  exit(2)
 api_port = os.environ["API_PORT"] if "DB_PORT" in os.environ.keys() else "8080"
+if ! api_port:
+  print("Please provide API_HOST and API_PORT as environment variable!")
+  exit(2)
+
 #remote = os.getenv("REMOTE_ADDR")
 form = cgi.FieldStorage()
 querystring = form.getvalue("querystring")
