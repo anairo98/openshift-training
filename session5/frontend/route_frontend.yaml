@@ -1,0 +1,13 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: frontend
+spec:
+  host: 3-tier-example.apps.lab1ocp-app.lab.app.wisit.in.bund.de
+  to:
+    kind: Service
+    name: frontend
+    weight: 100
+  port:
+    targetPort: 8080
+  wildcardPolicy: None

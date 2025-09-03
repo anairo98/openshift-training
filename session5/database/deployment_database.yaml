@@ -1,0 +1,129 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: database
+  name: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        alpha.image.policy.openshift.io/resolve-names: '*'
+      labels:
+        app: database
+    spec:
+      volumes:
+        - name: databasefolder
+          emptyDir: {}
+        - name: initdb
+          configMap:
+            name: 3tier-app
+      initContainers:
+        - name: init-db
+          image: image-registry.openshift-image-registry.svc:5000/3-tier-example/mariadb:10.3redhat
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              run-mysqld &
+              echo "Waiting for MariaDB to be ready...";
+              until mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} -e "SELECT 1"; do sleep 2; done;
+              echo "MariaDB is ready. Importing SQL file...";
+              mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} < /init_db.sql;
+              echo "SQL import completed!";
+          volumeMounts:
+            - name: databasefolder
+              mountPath: /var/lib/mysql/data
+            - name: initdb
+              mountPath: /init_db.sql
+              subPath: init_db.sql
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: 3tier-app
+                  key: DB_USERNAME
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: 3tier-app
+                  key: DB_PASSWORD
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: 3tier-app
+                  key: DB_DATABASE
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: 3tier-app
+                  key: DB_PASSWORD
+      containers:
+        - image: image-registry.openshift-image-registry.svc:5000/3-tier-example/mariadb:10.3redhat
+          name: mariadb
+          resources: {}
+          volumeMounts:
+            - name: databasefolder
+              mountPath: /var/lib/mysql/data
+          livenessProbe:
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          startupProbe:
+            exec:
+              command:
+              - bash
+              - -c
+              - mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} -e "SELECT 1"
+            periodSeconds: 10
+            failureThreshold: 60 # total 60x10s = 600s = 10min to initialize
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: 3tier-app
+                  key: DB_USERNAME
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: 3tier-app
+                  key: DB_PASSWORD
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: 3tier-app
+                  key: DB_DATABASE
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: 3tier-app
+                  key: DB_PASSWORD
+        - name: busybox
+          image: 'docker.io/radial/busyboxplus@sha256:f26b8738e52cd1dba801eb1978804e663c48e1e9cff128ac9423218be83c55b8'
+          command:
+            - sh
+            - '-c'
+            - while true ; do echo "still running" ; sleep 5 ; done
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+#    triggers:
+#      - type: ConfigChange
+#      - type: ImageChange
+#        imageChangeParams:
+#          automatic: true
+#          containerNames:
+#            - mariadb
+#          from:
+#            kind: ImageStreamTag
+#            name: mariadb:10.3redhat
+#            namespace: 3-tier-example
+#    strategy:
+#      type: Rolling
