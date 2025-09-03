@@ -17,8 +17,8 @@ spec:
         app: frontend
     spec:
       containers:
-        - image: image-registry.openshift-image-registry.svc:5000/3-tier-example/httpd-cgi:2.4
-          name: httpd-cgi
+        - image: image-registry.openshift-image-registry.svc:5000/wealthapp/frontend:latest
+          name: frontend
           resources: {}
           livenessProbe:
             httpGet:
@@ -32,52 +32,6 @@ spec:
               port: 8080
             initialDelaySeconds: 2
             periodSeconds: 10
-          volumeMounts:
-            - name: app-config
-              mountPath: /var/www/cgi-bin/app.py
-              subPath: app.py
-            - name: app-config
-              mountPath: /etc/httpd/conf.d/cgi.conf
-              subPath: cgi.conf
-            - name: app-config
-              mountPath: /etc/httpd/conf.d/cgi-default-app.conf
-              subPath: cgi-default-app.conf
-          env:
-            - name: API_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: 3tier-app
-                  key: API_HOST
-            - name: API_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: 3tier-app
-                  key: API_PORT
-        - name: busybox
-          image: 'docker.io/radial/busyboxplus@sha256:f26b8738e52cd1dba801eb1978804e663c48e1e9cff128ac9423218be83c55b8'
-          command:
-            - sh
-            - '-c'
-            - while true ; do echo "still running" ; sleep 5 ; done
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          imagePullPolicy: IfNotPresent
-      volumes:
-        - name: app-config
-          configMap:
-            name: 3tier-app
-            defaultMode: 360
-#  triggers:
-#    - type: ConfigChange
-#    - type: ImageChange
-#      imageChangeParams:
-#        automatic: true
-#        containerNames:
-#          - httpd-cgi
-#        from:
-#          kind: ImageStreamTag
-#          name: httpd-cgi:2.4
-#          namespace: 3-tier-example
   strategy:
     type: RollingUpdate
 status: {}

@@ -1,8 +1,7 @@
 kind: ImageStream
 apiVersion: image.openshift.io/v1
 metadata:
-  name: httpd-cgi
-  namespace: 3-tier-example
+  name: database
 spec:
   lookupPolicy:
     local: true
