@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  creationTimestamp: null
   labels:
     app: backend
   name: backend
@@ -16,9 +17,26 @@ spec:
         app: backend
     spec:
       containers:
-        - image: image-registry.openshift-image-registry.svc:5000/wealthapp/backend:latest
+        - image: REFERENCE-TO-IMAGESTREAM:TAG
           name: httpd-cgi
           resources: {}
+          env:
+          - name: DB_HOST
+            configMapKeyRef:
+              name: wealthapp
+              key: DB_HOST
+          - name: DB_USERNAME
+            secretKeyRef:
+              name: wealthapp
+              key: DB_USERNAME
+          - name: DB_PASSWORD
+            secretKeyRef:
+              name: wealthapp
+              key: DB_PASSWORD
+          - name: DB_DATABASE
+            secretKeyRef:
+              name: wealthapp
+              key: DB_DATABASE
           livenessProbe:
             httpGet:
               path: /

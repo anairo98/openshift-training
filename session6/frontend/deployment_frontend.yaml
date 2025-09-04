@@ -16,9 +16,18 @@ spec:
         app: frontend
     spec:
       containers:
-        - image: image-registry.openshift-image-registry.svc:5000/wealthapp/frontend:latest
+        - image: REFERENCE-TO-IMAGESTREAM:TAG
           name: frontend
           resources: {}
+          env:
+          - name: API_HOST
+            configMapKeyRef:
+              name: wealthapp
+              key: API_HOST
+          - name: API_PORT
+            configMapKeyRef:
+              name: wealthapp
+              key: API_PORT
           livenessProbe:
             httpGet:
               path: /cgi-bin/app.py
