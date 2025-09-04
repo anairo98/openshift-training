@@ -1,7 +1,7 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: backend
+  name: database
 spec:
   runPolicy: Serial
   source:
@@ -9,7 +9,7 @@ spec:
     git:
       uri: "https://github.com/anairo98/openshift-training.git"
       ref: main
-    contextDir: "session5/build_directories/backend"
+    contextDir: "session5_task3/build_directories/database"
   strategy:
     type: Docker
     dockerStrategy:
@@ -17,7 +17,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: "backend:latest"
+      name: "database:latest"
   triggers:
     - type: ConfigChange
     - type: ImageChange
