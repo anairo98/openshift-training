@@ -30,7 +30,7 @@ spec:
               echo "Waiting for MariaDB to be ready...";
               until mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} -e "SELECT 1"; do sleep 2; done;
               echo "MariaDB is ready. Importing SQL file...";
-              mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} < /init_db.sql;
+              mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} < init_db.sql;
               echo "SQL import completed!";
           volumeMounts:
             - name: databasefolder
