@@ -3,10 +3,10 @@ import cgi
 #import sqlite3
 import mysql.connector
 import os
-if (not os.environ['DB_HOST'] and
-    not os.environ['DB_USERNAME'] and
-    not os.environ['DB_PASSWORD'] and
-    not os.environ['DB_DATABASE']):
+if ('DB_HOST' not in os.environ.keys() or
+    'DB_USERNAME' not in os.environ.keys() or
+    'DB_PASSWORD' not in os.environ.keys() or
+    'DB_DATABASE' not in os.environ.keys()):
    print("Please provide DB_HOST, DB_USERNAME, DB_PASSWORD and DB_DATABASE as environment variables!")
    exit(2)
 
