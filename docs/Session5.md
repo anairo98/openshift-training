@@ -98,7 +98,7 @@ To recap your knowledge until now. You should be able to answer the following qu
 
 Our webapp got an update with new requirements.
 
-1. Change the BuildConfigs for the `frontend` and `backend` components, so that the `contextDir` now points to `session5_task3/build_directories/frontend` and `session5_task3/build_directories/backend` respectively.
+1. Change the BuildConfigs for the `frontend` and `backend` components, so that the `contextDir` now points to `session5_task3/build_directories/frontend` and `session5_task3/build_directories/backend` respectively and start the builds. After the builds finished, put the new image digest (the SHA Identifier) from the ImageStream into the corresponding deployments to update the used image.
 
 2. Trigger a new Build for the `frontend` and `backend` BuildConfigs and check, if the Deployments are still healthy. Do you see any errors?
 
