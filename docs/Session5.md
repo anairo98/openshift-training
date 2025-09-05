@@ -58,8 +58,8 @@ To recap your knowledge until now. You should be able to answer the following qu
 | API\_HOST    | backend    |
 | API\_PORT    | "8080"     |
 | DB\_HOST     | database   |
-| cgi-default-app.conf  | \<Directory "/var/www/html"\><br>  Options +ExecCGI<br>  DirectoryIndex /cgi-bin/app.py<br>\</Directory\> |
-| cgi-default-data.conf | \<Directory "/var/www/html"\><br>  Options +ExecCGI<br>  DirectoryIndex /cgi-bin/data.py<br>\</Directory\> |
+| cgi-default-app.conf  | <Directory "/var/www/html"\><br>  Options +ExecCGI<br>  DirectoryIndex /cgi-bin/app.py<br></Directory\> |
+| cgi-default-data.conf | <Directory "/var/www/html"\><br>  Options +ExecCGI<br>  DirectoryIndex /cgi-bin/data.py<br></Directory\> |
 
     !!! danger
         The last two keys contain multiline data. Preserve the newlines in the ConfigMap, so that the corresponding files can be used as provided here.

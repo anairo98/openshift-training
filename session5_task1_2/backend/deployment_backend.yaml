@@ -16,8 +16,8 @@ spec:
         app: backend
     spec:
       containers:
-        - image: image-registry.openshift-image-registry.svc:5000/wealthapp/backend:latest
-          name: httpd-cgi
+        - image: REFERENCE-TO-IMAGESTREAM:TAG
+          name: backend
           resources: {}
           livenessProbe:
             httpGet:
