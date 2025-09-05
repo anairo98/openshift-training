@@ -75,7 +75,7 @@ To recap your knowledge until now. You should be able to answer the following qu
 1. Deploy the resource manifests, that are provided in the repository under `session5_task1_2`, with the 3 components "frontend", "backend" and "database".
 
     !!! hint
-        Keep in mind, that you are using your own images with the provided BuildConfigs. Thus you need to place the correct references to your ImageStreams in the Deployment manifests.
+        Keep in mind, that you are using your own images with the provided BuildConfigs. Thus you need to place the correct references to your ImageStreams in the Deployment manifests. The database deployment has 2 mentions of the image, that you need to replace.
 2. Check your Deployments, if they are healthy. Then check the application by opening the Route URL. Do you see any errors? Diagnose them.
 
     !!! hint

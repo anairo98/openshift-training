@@ -1,4 +1,4 @@
-USE wealthapp;
+USE revenue;
 
 CREATE TABLE clients (
 Rank integer,
