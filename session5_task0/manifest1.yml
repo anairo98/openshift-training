@@ -1,0 +1,31 @@
+---
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: python
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: python
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'python:latest'
+  resources: {}
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Containerfile
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/anairo98/openshift-training.git'
+      ref: main
+    contextDir: session4/python_app/
+  triggers:
+    - type: ConfigChange
+  runPolicy: Serial
