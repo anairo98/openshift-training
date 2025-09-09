@@ -88,7 +88,7 @@ We will start by deploying the Python application from task 2 again. You can fin
 3. Look at your Secret and ConfigMap in the WebUI. Inspect their YAML representation and check, if the values are set how you expect it.
 
     !!! tip
-        As some values are base64-encoded, you might need to decode the values from the Secret/ConfigMap with the command `base64 -d`.
+        As some values are base64-encoded, you might need to decode the values from the Secret/ConfigMap with the command `echo "<insert encoded text> | base64 -d`.
 
 
 ### Task 2: Adding environment variables form Secrets/ConfigMaps to Deployments
