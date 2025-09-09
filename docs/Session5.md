@@ -108,7 +108,6 @@ The application has already defined an endpoint **/metrics** in the container fi
 |------------|----------------------------------------------------|
 | frontend   | API\_HOST, API\_PORT                               |
 | backend    | DB\_HOST, DB\_USERNAME, DB\_PASSWORD, DB\_DATABASE |
-| database   | DB\_HOST, DB\_USERNAME, DB\_PASSWORD, DB\_DATABASE |
 
 4. Verify, that the application now works correctly. It should look like this:
 
