@@ -13,11 +13,11 @@ We will start by deploying the Python application from task 2 again. You can fin
     !!! hint
         You need to adjust the name of the image to refence the correct *Imagestream* 
 
-Now we would now like to scrape metrics from the *python* application in a Prometheus server.
+    Now we would now like to scrape metrics from the *python* application in a Prometheus server.
 
-The application has already defined an endpoint **/metrics** in the container file and in the app.py file, which runs on **port 8000**.
+    The application has already defined an endpoint **/metrics** in the container file and in the app.py file, which runs on **port 8000**.
 
-1. Make this Endpoint of the *python-app* accessible from inside and outside the cluster (Create service and route). Depending on the names you gave, it should like similar to this:
+3. Make this Endpoint of the *python-app* accessible from inside and outside the cluster (Create service and route). Depending on the names you gave, it should like similar to this:
 
     !!! hint
         You already have created the Deployment, a Service and a Route, which listens on Port 8080. 
@@ -25,21 +25,21 @@ The application has already defined an endpoint **/metrics** in the container fi
 
     ![python-prometheus-accessible](images/session4/python_prometheus-accessible.png)
 
-> Now we can start to deploy the Prometheus server:
+    > Now we can start to deploy the Prometheus server:
 
-2. Create a ConfigMap, which should be consumed from the Prometheus server (manifest file can be found under the **session4/prometheus/** folder in the GitHub)
+4. Create a ConfigMap, which should be consumed from the Prometheus server (manifest file can be found under the **session4/prometheus/** folder in the GitHub)
 
     !!! info
         Contains the configurations for the endpoint from which the metrics are to be obtained (*python-app*) and, for example, the intervals at which the metrics are to be scraped
 
-3. Create an Imagestream, which refers to an **Prometheus** image from [Quay.io](https://quay.io/repository/prometheus/prometheus)
+5. Create an Imagestream, which refers to an **Prometheus** image from [Quay.io](https://quay.io/repository/prometheus/prometheus)
 
     ![Prometheus ImageStream](images/session4/prometheus-imagestream.png)
 
     !!! hint
         You can find the manifest file in the folder in the GitHub. But you need to adjust the image name!
 
-4. Create a Deployment which uses the *image* from the newly created **ImageStream** 
+6. Create a Deployment which uses the *image* from the newly created **ImageStream** 
     
     !!! note
         use the **deployment.yml** template, which can be found in the session4/prometheus folder on GitHub and asjust the reference-path to the newly created ImageStream. 
@@ -48,11 +48,11 @@ The application has already defined an endpoint **/metrics** in the container fi
         Probably, you will get an error. Read the logs of the failed pod. 
         The problem lays in the Hostname which you entered in the **ConfigMap** --> Check it out and fix the issue!
 
-5. Create a Service and a Route for the *Prometheus server* to acces it:
+7. Create a Service and a Route for the *Prometheus server* to acces it:
 
     ![Prometheus](images/session4/prometheus.png)
 
-6. Verify that the *Prometheus* is scraping data from the *python-app*. In the *Prometheus* UI click on *Status* and then on *Target health*: 
+8. Verify that the *Prometheus* is scraping data from the *python-app*. In the *Prometheus* UI click on *Status* and then on *Target health*: 
 
     ![Scraping data from python-app](images/session4/Scraping_python.png)
 
