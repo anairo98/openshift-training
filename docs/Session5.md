@@ -68,7 +68,7 @@ The application has already defined an endpoint **/metrics** in the container fi
 | DB_DATABASE | revenue    |
 
     !!! tip
-        You can do this directly in the WebUI, which shows a form for creating secrets.
+        You can do this directly in the WebUI, which shows a form for creating secrets. If you need further information about secrets, refer to the [Secret documentation](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/nodes/working-with-pods#nodes-pods-secrets).
 
 2. Create a ConfigMap with name "wealthapp", that contains the following keys and values:
 
@@ -80,8 +80,9 @@ The application has already defined an endpoint **/metrics** in the container fi
 | cgi-default-app.conf  | <Directory "/var/www/html"\><br>  Options +ExecCGI<br>  DirectoryIndex /cgi-bin/app.py<br></Directory\> |
 | cgi-default-data.conf | <Directory "/var/www/html"\><br>  Options +ExecCGI<br>  DirectoryIndex /cgi-bin/data.py<br></Directory\> |
 
-    !!! danger
-        The last two keys contain multiline data. Preserve the newlines in the ConfigMap, so that the corresponding files can be used as provided here.
+
+    !!! warning
+        The last two keys contain multiline data. Preserve the newlines in the ConfigMap, so that the corresponding files can be used as provided here. If you need further information about ConfigMaps, refer to the [ConfigMap documentation](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/building_applications/config-maps).
 
 3. Look at your Secret and ConfigMap in the WebUI. Inspect their YAML representation and check, if the values are set how you expect it.
 
