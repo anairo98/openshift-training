@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+  annotations: {}
+spec:
+  selector:
+    matchLabels:
+      app: python
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      containers:
+        - name: container
+          image: 'IMAGESTREAM-REFERENCE:latest'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env: []
+      imagePullSecrets: []
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  paused: false
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-service
+spec:
+  selector:
+    app: python
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: python
+spec:
+  path: /
+  to:
+    name: 'python-service'
+    weight: 100
+    kind: Service

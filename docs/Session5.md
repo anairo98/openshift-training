@@ -2,45 +2,67 @@
 
 ## Tasks
 
-### Task 0: Recap Quiz 
+### Task 0: Recap Task 
 
-To recap your knowledge until now. You should be able to answer the following questions. You can access the Quiz under the following link: 
+Let's start with a short recap task that revisits what we learned in session 4. 
+We will start by deploying the Python application from task 2 again. You can find the corresponding manifest files in the Github folder session5_task0.
 
-[Recap Quiz](https://forms.office.com/Pages/ResponsePage.aspx?id=ZGZljjZfW0qVTMVAX9KSBjhzaJv-m0hJoQL2QDQKeitUQTdUVzhLQ1RPT1RGNEtZSjhXSlQxWEU4Wi4u)
+1. Deploy the first manifest file *manifest1.yml*, it contains the yaml files for the Imagestream and the BuildConfig
+2. Deploy the second manifest file *manifest2.yml*, which contains the yaml file for the Deployment, Service and the Route
 
-1. How does a Kubernetes Service in OpenShift know which Pods to route traffic to?
-    1. It uses the Pod's IP address directly
-    2. It matches the Pod's labels with its selector
-    3. It queries the Deployment for Pod information
-    4. It uses the container image name as a reference
+    !!! hint
+        You need to adjust the name of the image to refence the correct *Imagestream* 
 
-2. What happens if a Deployment in OpenShift references an image that does not exist in the ImageStream?
-    1. The Deployment will automatically build the image
-    2. The Pod will start but fail during runtime
-    3. The Pod will fail to start due to ImagePull errors
-    4. OpenShift will fallback to a default image
+    Now we would now like to scrape metrics from the *python* application in a Prometheus server.
 
-3. Which of the following best describes the role of an ImageStream in OpenShift 
-    1. It stores container images in the internal registry
-    2. It defines the build strategy for applications
-    3. It acts as a reference point for image versions and triggers
-    4. It manages network access between Pods 
+    The application has already defined an endpoint **/metrics** in the container file and in the app.py file, which runs on **port 8000**.
 
-4. Which of the following statements about Deployments in OpenShift is true?
-    1. A Deployment directly manages Pods without ReplicaSets 
-    2. A Deployment must always be paired with a BuildConfig
-    3. A Deplyoment can be triggered by changes in an ImageStream
-    4. A Deployment cannot be scaled manually 
+3. Make this Endpoint of the *python-app* accessible from inside and outside the cluster (Create service and route). Depending on the names you gave, it should like similar to this:
 
-5. In OpenShift, what is the correct relationship between a Route and a Service?
-    1. A Route exposes a Service, which then routes traffic to matching Pods
-    2. A Route exposes a Deployment directly to external traffic
-    3. A Route forwards to a Pod based on its IP address
-    4. A Route must reference an ImageStream to function correctly 
+    !!! hint
+        You already have created the Deployment, a Service and a Route, which listens on Port 8080. 
+        Now you should create a Service and a Route to the same Deployment but to the endpoint on port **8000**
+
+    ![python-prometheus-accessible](images/session4/python_prometheus-accessible.png)
+
+    > Now we can start to deploy the Prometheus server:
+
+4. Create a ConfigMap, which should be consumed from the Prometheus server (manifest file can be found under the **session4/prometheus/** folder in the GitHub)
+
+    !!! info
+        Contains the configurations for the endpoint from which the metrics are to be obtained (*python-app*) and, for example, the intervals at which the metrics are to be scraped
+
+5. Create an Imagestream, which refers to an **Prometheus** image from [Quay.io](https://quay.io/repository/prometheus/prometheus)
+
+    ![Prometheus ImageStream](images/session4/prometheus-imagestream.png)
+
+    !!! hint
+        You can find the manifest file in the folder in the GitHub. But you need to adjust the image name!
+
+6. Create a Deployment which uses the *image* from the newly created **ImageStream** 
+    
+    !!! note
+        use the **deployment.yml** template, which can be found in the session4/prometheus folder on GitHub and asjust the reference-path to the newly created ImageStream. 
+
+    !!! warning 
+        Probably, you will get an error. Read the logs of the failed pod. 
+        The problem lays in the Hostname which you entered in the **ConfigMap** --> Check it out and fix the issue!
+
+7. Create a Service and a Route for the *Prometheus server* to acces it:
+
+    ![Prometheus](images/session4/prometheus.png)
+
+8. Verify that the *Prometheus* is scraping data from the *python-app*. In the *Prometheus* UI click on *Status* and then on *Target health*: 
+
+    ![Scraping data from python-app](images/session4/Scraping_python.png)
+
 
 ### Task 1: Secrets and ConfigMaps
 
 1. Create a Secret with name "wealthapp", that contains the following keys and values:
+
+    !!! tip
+        You can do this directly in the WebUI, which shows a form for creating secrets. If you need further information about secrets, refer to the [Secret documentation](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/nodes/working-with-pods#nodes-pods-secrets).
 
 | Key         | Value      |
 |-------------|------------|
@@ -48,10 +70,11 @@ To recap your knowledge until now. You should be able to answer the following qu
 | DB_PASSWORD | eatTheRich |
 | DB_DATABASE | revenue    |
 
-    !!! tip
-        You can do this directly in the WebUI, which shows a form for creating secrets.
 
 2. Create a ConfigMap with name "wealthapp", that contains the following keys and values:
+
+    !!! warning
+        The last two keys contain multiline data. Preserve the newlines in the ConfigMap, so that the corresponding files can be used as provided here. If you need further information about ConfigMaps, refer to the [ConfigMap documentation](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/building_applications/config-maps).
 
 | Key         | Value      |
 |-------------|------------|
@@ -61,13 +84,11 @@ To recap your knowledge until now. You should be able to answer the following qu
 | cgi-default-app.conf  | <Directory "/var/www/html"\><br>  Options +ExecCGI<br>  DirectoryIndex /cgi-bin/app.py<br></Directory\> |
 | cgi-default-data.conf | <Directory "/var/www/html"\><br>  Options +ExecCGI<br>  DirectoryIndex /cgi-bin/data.py<br></Directory\> |
 
-    !!! danger
-        The last two keys contain multiline data. Preserve the newlines in the ConfigMap, so that the corresponding files can be used as provided here.
 
 3. Look at your Secret and ConfigMap in the WebUI. Inspect their YAML representation and check, if the values are set how you expect it.
 
     !!! tip
-        As some values are base64-encoded, you might need to decode the values from the Secret/ConfigMap with the command `base64 -d`.
+        As some values are base64-encoded, you might need to decode the values from the Secret/ConfigMap with the command `echo "<insert encoded text> | base64 -d`.
 
 
 ### Task 2: Adding environment variables form Secrets/ConfigMaps to Deployments
@@ -87,7 +108,6 @@ To recap your knowledge until now. You should be able to answer the following qu
 |------------|----------------------------------------------------|
 | frontend   | API\_HOST, API\_PORT                               |
 | backend    | DB\_HOST, DB\_USERNAME, DB\_PASSWORD, DB\_DATABASE |
-| database   | DB\_HOST, DB\_USERNAME, DB\_PASSWORD, DB\_DATABASE |
 
 4. Verify, that the application now works correctly. It should look like this:
 
