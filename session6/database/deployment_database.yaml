@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: database
+  name: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        alpha.image.policy.openshift.io/resolve-names: '*'
+      labels:
+        app: database
+    spec:
+      volumes:
+        - name: databasefolder
+          emptyDir: {}
+      initContainers:
+        - name: init-db
+          image: REFERENCE-TO-IMAGESTREAM:TAG
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              run-mysqld &
+              echo "Waiting for MariaDB to be ready...";
+              until mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} -e "SELECT 1"; do sleep 2; done;
+              echo "MariaDB is ready";
+              if ! mariadb -u ${MYSQL_USER} -p${MYSQL_PASSWORD} -e "SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_NAME = 'clients';" 2>&1 > /dev/null ;
+              then
+                echo "Importing SQL file...";
+                mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} < init_db.sql;
+                echo "SQL import completed!";
+              fi;
+          volumeMounts:
+            - name: databasefolder
+              mountPath: /var/lib/mysql/data
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_USERNAME
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_PASSWORD
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_DATABASE
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_PASSWORD
+      containers:
+        - image: REFERENCE-TO-IMAGESTREAM:TAG
+          name: mariadb
+          resources: {}
+          volumeMounts:
+            - name: databasefolder
+              mountPath: /var/lib/mysql/data
+          livenessProbe:
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          startupProbe:
+            exec:
+              command:
+              - bash
+              - -c
+              - mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} -e "SELECT 1"
+            periodSeconds: 10
+            failureThreshold: 60
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_USERNAME
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_PASSWORD
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_DATABASE
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_PASSWORD

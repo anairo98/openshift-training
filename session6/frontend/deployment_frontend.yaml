@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - image: REFERENCE-TO-IMAGESTREAM:TAG
+          name: frontend
+          resources: {}
+          env:
+            - name: API_HOST
+              configMapKeyRef:
+                name: wealthapp
+                key: API_HOST
+            - name: API_PORT
+              configMapKeyRef:
+                name: wealthapp
+                key: API_PORT
+          livenessProbe:
+            httpGet:
+              path: /cgi-bin/app.py
+              port: 8080
+            initialDelaySeconds: 2
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /cgi-bin/app.py
+              port: 8080
+            initialDelaySeconds: 2
+            periodSeconds: 10
+  strategy:
+    type: RollingUpdate
+status: {}

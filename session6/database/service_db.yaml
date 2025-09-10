@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: database
+spec:
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: ClusterIP
+  sessionAffinity: None
+  selector:
+    app: database
