@@ -9,7 +9,7 @@ spec:
     git:
       uri: "https://github.com/anairo98/openshift-training.git"
       ref: main
-    contextDir: "session5_task1_2/build_directories/database"
+    contextDir: "session6/build_directories/database"
   strategy:
     type: Docker
     dockerStrategy:
