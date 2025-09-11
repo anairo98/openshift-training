@@ -21,13 +21,15 @@ spec:
           resources: {}
           env:
             - name: API_HOST
-              configMapKeyRef:
-                name: wealthapp
-                key: API_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: wealthapp
+                  key: API_HOST
             - name: API_PORT
-              configMapKeyRef:
-                name: wealthapp
-                key: API_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: wealthapp
+                  key: API_PORT
           livenessProbe:
             httpGet:
               path: /cgi-bin/app.py

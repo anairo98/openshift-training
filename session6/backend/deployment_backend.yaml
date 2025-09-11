@@ -21,21 +21,25 @@ spec:
           resources: {}
           env:
             - name: DB_HOST
-              configMapKeyRef:
-                name: wealthapp
-                key: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: wealthapp
+                  key: DB_HOST
             - name: DB_USERNAME
-              secretKeyRef:
-                name: wealthapp
-                key: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_USERNAME
             - name: DB_PASSWORD
-              secretKeyRef:
-                name: wealthapp
-                key: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_PASSWORD
             - name: DB_DATABASE
-              secretKeyRef:
-                name: wealthapp
-                key: DB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: wealthapp
+                  key: DB_DATABASE
           livenessProbe:
             httpGet:
               path: /
