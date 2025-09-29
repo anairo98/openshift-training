@@ -18,9 +18,6 @@
 
 2. Create a ConfigMap with name "wealthapp", that contains the following keys and values:
 
-    !!! warning
-        The last two keys contain multiline data. Preserve the newlines in the ConfigMap, so that the corresponding files can be used as provided here. If you need further information about ConfigMaps, refer to the [ConfigMap documentation](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/building_applications/config-maps).
-
 | Key         | Value      |
 |-------------|------------|
 | API\_HOST    | backend    |
