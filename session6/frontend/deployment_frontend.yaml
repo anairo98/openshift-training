@@ -9,7 +9,6 @@ spec:
   selector:
     matchLabels:
       app: frontend
-  strategy: {}
   template:
     metadata:
       labels:
