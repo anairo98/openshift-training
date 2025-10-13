@@ -1,0 +1,372 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: wealthapp
+  annotations:
+    description: "Builds and deploys the Wealthapp from the Git Repo for the Openshift Training."
+labels:
+  app: "wealthapp-${ID}"
+parameters:
+  - name: NAMESPACE
+    description: "Namespace to deploy the application in"
+  - name: ID
+    description: "ID of this deployment of the app"
+    generate: expression
+    from: "[a-z0-9]{5}"
+  - name: GIT_REPO
+    description: "Git repository URL"
+    value: "https://github.com/anairo98/openshift-training.git"
+  - name: GIT_REF
+    description: "Git reference (branch or tag)"
+    value: "main"
+  - name: CONTEXT_DIR
+    description: "Directory containing the directories for backend, frontend and database with their respective Dockerfiles"
+    value: "session6/build_directories"
+  - name: APP_NAME
+    description: "Application name"
+    value: "myapp"
+  - name: IMAGE_TAG
+    description: "Tag for the built image"
+    value: "latest"
+  - name: DB_DATABASE
+    description: "Name of the database inside SQL"
+    value: revenue
+  - name: DB_USERNAME
+    description: "Username in the SQL database"
+    value: "wealthapp"
+  - name: DB_PASSWORD
+    description: "Password for the SQL database"
+    generate: expression
+    from: "[a-zA-Z0-9]{32}"
+objects:
+- kind: Secret
+  apiVersion: v1
+  metadata:
+    name: wealthapp
+  stringData:
+    DB_USERNAME: "${DB_USERNAME}"
+    DB_PASSWORD: "${DB_PASSWORD}"
+    DB_DATABASE: "${DB_DATABASE}"
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: wealthapp
+  data:
+    API_HOST: backend
+    API_PORT: "8080"
+    DB_HOST: database
+- kind: ImageStream
+  apiVersion: image.openshift.io/v1
+  metadata:
+    name: backend
+  spec:
+    lookupPolicy:
+      local: true
+
+- kind: ImageStream
+  apiVersion: image.openshift.io/v1
+  metadata:
+    name: frontend
+  spec:
+    lookupPolicy:
+      local: true
+
+- kind: ImageStream
+  apiVersion: image.openshift.io/v1
+  metadata:
+    name: database
+  spec:
+    lookupPolicy:
+      local: true
+
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    name: backend
+  spec:
+    runPolicy: Serial
+    source:
+      type: Git
+      git:
+        uri: "${GIT_REPO}"
+        ref: "${GIT_REF}"
+      contextDir: "${CONTEXT_DIR}/backend"
+    strategy:
+      type: Docker
+      dockerStrategy:
+        dockerfilePath: Dockerfile
+    output:
+      to:
+        kind: ImageStreamTag
+        name: "backend:${IMAGE_TAG}"
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    name: frontend
+  spec:
+    runPolicy: Serial
+    source:
+      type: Git
+      git:
+        uri: "${GIT_REPO}"
+        ref: "${GIT_REF}"
+      contextDir: "${CONTEXT_DIR}/frontend"
+    strategy:
+      type: Docker
+      dockerStrategy:
+        dockerfilePath: Dockerfile
+    output:
+      to:
+        kind: ImageStreamTag
+        name: "frontend:${IMAGE_TAG}"
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    name: database
+  spec:
+    runPolicy: Serial
+    source:
+      type: Git
+      git:
+        uri: "${GIT_REPO}"
+        ref: "${GIT_REF}"
+      contextDir: "${CONTEXT_DIR}/database"
+    strategy:
+      type: Docker
+      dockerStrategy:
+        dockerfilePath: Dockerfile
+    output:
+      to:
+        kind: ImageStreamTag
+        name: "database:${IMAGE_TAG}"
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    labels:
+      app: backend
+    name: backend
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: backend
+    template:
+      metadata:
+        labels:
+          app: backend
+      spec:
+        containers:
+          - image: "image-registry.openshift-image-registry.svc:5000/${NAMESPACE}/backend:${IMAGE_TAG}"
+            name: backend
+            resources: {}
+            env:
+              - name: DB_HOST
+                valueFrom:
+                  configMapKeyRef:
+                    name: wealthapp
+                    key: DB_HOST
+              - name: DB_USERNAME
+                valueFrom:
+                  secretKeyRef:
+                    name: wealthapp
+                    key: DB_USERNAME
+              - name: DB_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: wealthapp
+                    key: DB_PASSWORD
+              - name: DB_DATABASE
+                valueFrom:
+                  secretKeyRef:
+                    name: wealthapp
+                    key: DB_DATABASE
+            livenessProbe:
+              httpGet:
+                path: /
+                port: 8080
+              initialDelaySeconds: 2
+              periodSeconds: 10
+            readinessProbe:
+              httpGet:
+                path: /
+                port: 8080
+              initialDelaySeconds: 2
+              periodSeconds: 10
+    strategy:
+      type: RollingUpdate
+  status: {}
+
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    labels:
+      app: frontend
+    name: frontend
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: frontend
+    template:
+      metadata:
+        labels:
+          app: frontend
+      spec:
+        containers:
+          - image: "image-registry.openshift-image-registry.svc:5000/${NAMESPACE}/frontend:${IMAGE_TAG}"
+            name: frontend
+            resources: {}
+            env:
+              - name: API_HOST
+                valueFrom:
+                  configMapKeyRef:
+                    name: wealthapp
+                    key: API_HOST
+              - name: API_PORT
+                valueFrom:
+                  configMapKeyRef:
+                    name: wealthapp
+                    key: API_PORT
+            livenessProbe:
+              httpGet:
+                path: /cgi-bin/app.py
+                port: 8080
+              initialDelaySeconds: 2
+              periodSeconds: 10
+            readinessProbe:
+              httpGet:
+                path: /cgi-bin/app.py
+                port: 8080
+              initialDelaySeconds: 2
+              periodSeconds: 10
+    strategy:
+      type: RollingUpdate
+  status: {}
+
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    labels:
+      app: database
+    name: database
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: database
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          alpha.image.policy.openshift.io/resolve-names: '*'
+        labels:
+          app: database
+      spec:
+        containers:
+          - image: "image-registry.openshift-image-registry.svc:5000/${NAMESPACE}/database:${IMAGE_TAG}"
+            name: mariadb
+            resources: {}
+            #volumeMounts:
+            #  - name: databasefolder
+            #    mountPath: /var/lib/mysql/data
+            livenessProbe:
+              tcpSocket:
+                port: 3306
+              initialDelaySeconds: 10
+              periodSeconds: 5
+            startupProbe:
+              exec:
+                command:
+                - bash
+                - -c
+                - mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} -e "SELECT 1"
+              periodSeconds: 10
+              failureThreshold: 60
+            env:
+              - name: MYSQL_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: wealthapp
+                    key: DB_USERNAME
+              - name: MYSQL_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: wealthapp
+                    key: DB_PASSWORD
+              - name: MYSQL_DATABASE
+                valueFrom:
+                  secretKeyRef:
+                    name: wealthapp
+                    key: DB_DATABASE
+              - name: MYSQL_ROOT_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: wealthapp
+                    key: DB_PASSWORD
+
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: backend
+  spec:
+    ports:
+      - protocol: TCP
+        port: 8080
+        targetPort: 8080
+    type: ClusterIP
+    sessionAffinity: None
+    selector:
+      app: backend
+
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: frontend
+  spec:
+    ports:
+      - protocol: TCP
+        port: 8080
+        targetPort: 8080
+    type: ClusterIP
+    sessionAffinity: None
+    selector:
+      app: frontend
+
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: database
+  spec:
+    ports:
+      - protocol: TCP
+        port: 3306
+        targetPort: 3306
+    type: ClusterIP
+    sessionAffinity: None
+    selector:
+      app: database
+
+- kind: Route
+  apiVersion: route.openshift.io/v1
+  metadata:
+    name: frontend
+  spec:
+    to:
+      kind: Service
+      name: frontend
+      weight: 100
+    port:
+      targetPort: 8080
+    wildcardPolicy: None
