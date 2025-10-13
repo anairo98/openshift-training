@@ -5,7 +5,8 @@ metadata:
   annotations:
     description: "Builds and deploys the Wealthapp from the Git Repo for the Openshift Training."
 labels:
-  app: "wealthapp-${ID}"
+  app: "wealthapp"
+  id: "${ID}"
 parameters:
   - name: NAMESPACE
     description: "Namespace to deploy the application in"
@@ -21,7 +22,7 @@ parameters:
     value: "main"
   - name: CONTEXT_DIR
     description: "Directory containing the directories for backend, frontend and database with their respective Dockerfiles"
-    value: "session6/build_directories"
+    value: "session7/build_directories"
   - name: APP_NAME
     description: "Application name"
     value: "myapp"
