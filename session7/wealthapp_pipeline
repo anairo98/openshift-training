@@ -53,15 +53,14 @@ pipeline {
                 script {
                     openshift.withCluster() {
                         openshift.withProject() {
-                            // create a new application from the templatePath
-                            //openshift.newApp(templatePath)
-                            //openshift.create( openshift.process( template, "-p", "NAMESPACE=${openshift.project()}") )
                             def templateSelector = openshift.selector( "template", "wealthapp")
                             def templateExists = templateSelector.exists()
                             if (!templateExists) {
                                 echo "Template wealthapp does not exist. Creating now..."
                                 def template = openshift.create('https://raw.githubusercontent.com/anairo98/openshift-training/refs/heads/main/session7/wealthapp_template.yaml').object()
                                 echo "Template created!"
+                            } else {
+                                echo "Template already exists"
                             }
                         }
                     }
@@ -73,10 +72,6 @@ pipeline {
                 script {
                     openshift.withCluster() {
                         openshift.withProject() {
-                            //def rm = openshift.selector("dc", templateName).rollout()
-                            //openshift.selector("dc", templateName).related('pods').untilEach(1) {
-                            //    return (it.object().status.phase == "Running")
-                            //}
                             def templateSelector = openshift.selector( "template", "wealthapp")
                             def template = templateSelector.object()
                             openshift.create( openshift.process( template, "-p", "NAMESPACE=${openshift.project()}" ) )
@@ -90,6 +85,16 @@ pipeline {
                 script {
                     openshift.withCluster() {
                         openshift.withProject() {
+                            echo "Waiting for builds to finish..."
+                            def build = openshift.selector('build', [app: 'wealthapp'])
+                            timeout(time: 10, unit: 'MINUTES') {
+                                build.untilEach {
+                                    def phase = it.object().status.phase
+                                    echo "Build ${it.name()} is in phase: ${phase}"
+                                    return (phase == "Complete" || phase == "Failed" || phase == "Cancelled")
+                                }
+                            }
+                            echo "tagging"
                             // if everything else succeeded, tag the ${templateName}:latest image as ${templateName}-staging:latest
                             // a pipeline build config for the staging environment can watch for the ${templateName}-staging:latest
                             // image to change and then deploy it to the staging environment
