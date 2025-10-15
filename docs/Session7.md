@@ -64,3 +64,5 @@ openshift.tag("<imagename>:latest", "<imagename>:staging")
   This code snippet will wait for the builds to finish, before trying to tag the resulting images.
   
 </details>
+
+4. Test the pipeline again. Does it work now? Check in the Openshift WebUI, if you can find the "staging" tags in the Imagestreams.
