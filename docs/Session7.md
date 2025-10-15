@@ -37,32 +37,32 @@ To facilitate future staging of the wealthapp, the ops team wants to also tag ev
 
 1. Add a new stage named "tagging" at the end of the pipeline definition. Use the other stages for reference on how to build up a stage for execution with openshift. For each of the three images, that is build for the wealthapp, add the line (and replace "<imagename>" with the name of the corresponding Imagestream):
 
-```
-openshift.tag("<imagename>:latest", "<imagename>:staging")
-```
+    ```
+    openshift.tag("<imagename>:latest", "<imagename>:staging")
+    ```
 
 2. Save and let the pipeline run. Look at the console output. Is everything working correctly? If not, why?
 
 3. Fix the pipeline by adding the following code snippet directly before the tagging lines:
 
-<details>
-  <summary>Code fix:</summary>
-  
-  ```
-  echo "Waiting for builds to finish..."
-  def build = openshift.selector('build', [app: 'wealthapp'])
-  timeout(time: 10, unit: 'MINUTES') {
-      build.untilEach {
-          def phase = it.object().status.phase
-          echo "Build ${it.name()} is in phase: ${phase}"
-          return (phase == "Complete" || phase == "Failed" || phase == "Cancelled")
+    <details>
+      <summary>Code fix:</summary>
+      
+      ```
+      echo "Waiting for builds to finish..."
+      def build = openshift.selector('build', [app: 'wealthapp'])
+      timeout(time: 10, unit: 'MINUTES') {
+          build.untilEach {
+              def phase = it.object().status.phase
+              echo "Build ${it.name()} is in phase: ${phase}"
+              return (phase == "Complete" || phase == "Failed" || phase == "Cancelled")
+          }
       }
-  }
-  echo "tagging"
-  ```
+      echo "tagging"
+      ```
 
-  This code snippet will wait for the builds to finish, before trying to tag the resulting images.
-  
-</details>
+      This code snippet will wait for the builds to finish, before trying to tag the resulting images.
+      
+    </details>
 
 4. Test the pipeline again. Does it work now? Check in the Openshift WebUI, if you can find the "staging" tags in the Imagestreams.
