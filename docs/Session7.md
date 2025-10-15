@@ -13,7 +13,7 @@ To increase the speed of development and decrease the time to market, the dev te
 3. In the resulting form set the "Volume Capacity" to "3Gi". Leave the rest with its default values und click "Create". Wait for the Jenkins Pod to get ready.
 
     !!! note
-    The used Jenkins template still uses the deprecated DeploymentConfig resource, which basically has the same functionality as the Deployment resource.
+        The used Jenkins template still uses the deprecated DeploymentConfig resource, which basically has the same functionality as the Deployment resource.
 
 4. Open the Jenkins WebUI from the URL of the jenkins Route, login with your Openshift credentials and Allow the selected permissions, so that Openshift can handle the authentication for Jenkins.
 
@@ -37,7 +37,9 @@ To facilitate future staging of the wealthapp, the ops team wants to also tag ev
 
 1. Add a new stage named "tagging" at the end of the pipeline definition. Use the other stages for reference on how to build up a stage for execution with openshift. For each of the three images, that is build for the wealthapp, add the line (and replace "<imagename>" with the name of the corresponding Imagestream):
 
-    openshift.tag("<imagename>:latest", "<imagename>:staging")
+```
+openshift.tag("<imagename>:latest", "<imagename>:staging")
+```
 
 2. Save and let the pipeline run. Look at the console output. Is everything working correctly? If not, why?
 
