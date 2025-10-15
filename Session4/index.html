@@ -1,0 +1,944 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://trainings.com/Session4/">
+      
+      
+        <link rel="prev" href="../Session3/">
+      
+      
+        <link rel="next" href="../Session5/">
+      
+      
+      <link rel="icon" href="../assets/images/openshift_logo.jpeg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Session 4 - OpenShift Training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1%207.775V2.75C1%201.784%201.784%201%202.75%201h5.025c.464%200%20.91.184%201.238.513l6.25%206.25a1.75%201.75%200%200%201%200%202.474l-5.026%205.026a1.75%201.75%200%200%201-2.474%200l-6.25-6.25A1.75%201.75%200%200%201%201%207.775m1.5%200c0%20.066.026.13.073.177l6.25%206.25a.25.25%200%200%200%20.354%200l5.025-5.025a.25.25%200%200%200%200-.354l-6.25-6.25a.25.25%200%200%200-.177-.073H2.75a.25.25%200%200%200-.25.25ZM6%205a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Merriweather Sans";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-hands-on-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OpenShift Training" class="md-header__button md-logo" aria-label="OpenShift Training" data-md-component="logo">
+      
+  <img src="../assets/images/openshift_logo.jpeg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OpenShift Training
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Session 4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="teal"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session1/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session2/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 2
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session3/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 3
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 4
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session5/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 5
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session6/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 6
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session7/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 7
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OpenShift Training" class="md-nav__button md-logo" aria-label="OpenShift Training" data-md-component="logo">
+      
+  <img src="../assets/images/openshift_logo.jpeg" alt="logo">
+
+    </a>
+    OpenShift Training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Session 4
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 4
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tasks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-0-recap-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 0: Recap Quiz
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-1-imagestreams-and-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 1: ImageStreams and Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-2-deploy-from-containerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 2: Deploy from Containerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-3-setting-up-prometheus-and-scraping-logs-from-the-python-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 3: Setting up Prometheus and Scraping logs from the python-app
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4-hands-on-lab">4. Hands-On Lab</h1>
+<h2 id="tasks">Tasks</h2>
+<h3 id="task-0-recap-quiz">Task 0: Recap Quiz</h3>
+<p>To recap your knowledge until now. You should be able to answer the following questions. You can access the Quiz under the following link: </p>
+<p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=ZGZljjZfW0qVTMVAX9KSBjhzaJv-m0hJoQL2QDQKeitUQTdUVzhLQ1RPT1RGNEtZSjhXSlQxWEU4Wi4u">Recap Quiz</a></p>
+<ol>
+<li>
+<p>How does a Kubernetes Service in OpenShift know which Pods to route traffic to?</p>
+<ol>
+<li>It uses the Pod's IP address directly</li>
+<li>It matches the Pod's labels with its selector</li>
+<li>It queries the Deployment for Pod information</li>
+<li>It uses the container image name as a reference</li>
+</ol>
+</li>
+<li>
+<p>What happens if a Deployment in OpenShift references an image that does not exist in the ImageStream?</p>
+<ol>
+<li>The Deployment will automatically build the image</li>
+<li>The Pod will start but fail during runtime</li>
+<li>The Pod will fail to start due to ImagePull errors</li>
+<li>OpenShift will fallback to a default image</li>
+</ol>
+</li>
+<li>
+<p>Which of the following best describes the role of an ImageStream in OpenShift </p>
+<ol>
+<li>It stores container images in the internal registry</li>
+<li>It defines the build strategy for applications</li>
+<li>It acts as a reference point for image versions and triggers</li>
+<li>It manages network access between Pods </li>
+</ol>
+</li>
+<li>
+<p>Which of the following statements about Deployments in OpenShift is true?</p>
+<ol>
+<li>A Deployment directly manages Pods without ReplicaSets </li>
+<li>A Deployment must always be paired with a BuildConfig</li>
+<li>A Deplyoment can be triggered by changes in an ImageStream</li>
+<li>A Deployment cannot be scaled manually </li>
+</ol>
+</li>
+<li>
+<p>In OpenShift, what is the correct relationship between a Route and a Service?</p>
+<ol>
+<li>A Route exposes a Service, which then routes traffic to matching Pods</li>
+<li>A Route exposes a Deployment directly to external traffic</li>
+<li>A Route forwards to a Pod based on its IP address</li>
+<li>A Route must reference an ImageStream to function correctly </li>
+</ol>
+</li>
+</ol>
+<h3 id="task-1-imagestreams-and-deployment">Task 1: ImageStreams and Deployment</h3>
+<ol>
+<li>
+<p>Create a Imagestream which should refer an nginx image from <a href="https://quay.io/repository/nginx/nginx-unprivileged">Quay.io</a> </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There is a template in the GitHub in the folder: session4/nginx</p>
+</div>
+<ol>
+<li>Create a deployment based on that newly created Imagestream. </li>
+<li>The Deployment should have the following characteristics:<ul>
+<li>name: nginx-unprivileged </li>
+<li>port: 8080</li>
+<li>label: app: nginx-unprivileged</li>
+<li>image: REFERENCE-TO-IMAGESTREAM:TAG</li>
+</ul>
+</li>
+</ol>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can create the Deployment by using the survey or by using the YAML input field. If you would like to use the YAML input, it can be helpful to reference the Kubernetes documentation: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployments in Kubernetes</a></p>
+</div>
+</li>
+<li>
+<p>Create a Service names <em>nginx-unprivileged</em> of the Deployment</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Keep in mind, that you are connecting the correct Deployment to yout service and to set the <em>targetPort</em> correct!</p>
+</div>
+</li>
+<li>
+<p>Create a Route of the Service to access the <em>nginx</em> Deployment from outside the cluster </p>
+</li>
+<li>
+<p>Verify that the Deployment, Service and Route works correctly by entering the Route. It should look like this: </p>
+<p><img alt="Welcome to NGINX" src="../images/session4/welcome_nginx.png" /></p>
+</li>
+</ol>
+<h3 id="task-2-deploy-from-containerfile">Task 2: Deploy from Containerfile</h3>
+<ol>
+<li>Create a ImageStream </li>
+<li>
+<p>Create a BuildConfig by using the <em>session4/python_app/buildconfig.yml</em> file</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You need to adjust some of the fields in the BuildConfig. </p>
+</div>
+</li>
+<li>
+<p>Start a Build </p>
+</li>
+<li>
+<p>Verify that the Image is tagged to your created ImageStream </p>
+<p><img alt="Tagged image" src="../images/session4/tagged_image.png" /></p>
+</li>
+<li>
+<p>Create a Deployment of the <em>python-app</em>, which uses the newly tagged image of the ImageStream </p>
+<ul>
+<li>containerPort: 8080</li>
+<li>label: app=python</li>
+</ul>
+</li>
+<li>
+<p>Create a Service of the <em>python-app</em> Deployment </p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Keep in mind, that you need to set the correct <em>label</em> and <em>targetPort</em></p>
+</div>
+</li>
+<li>
+<p>Create a Route to access the <em>python-app</em> also from outside the cluster</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>If everything works correctly, you should see the following message. </p>
+</div>
+<p><img alt="python-app" src="../images/session4/python_app_output.png" /></p>
+</li>
+</ol>
+<h3 id="task-3-setting-up-prometheus-and-scraping-logs-from-the-python-app">Task 3: Setting up Prometheus and Scraping logs from the python-app</h3>
+<p>We would now like to scrape metrics from the <em>python-app</em> in a Prometheus server.</p>
+<p>The application has already defined an endpoint <strong>/metrics</strong> in the container file and in the app.py file, which runs on <strong>port 8000</strong>.</p>
+<ol>
+<li>
+<p>Make this Endpoint of the <em>python-app</em> accessible from inside and outside the cluster (Create service and route). Depending on the names you gave, it should like similar to this:</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You already have created the Deployment, a Service and a Route, which listens on Port 8080. 
+Now you should create a Service and a Route to the same Deployment but to the endpoint on port <strong>8000</strong> </p>
+</div>
+<p><img alt="python-prometheus-accessible" src="../images/session4/python_prometheus-accessible.png" /></p>
+</li>
+</ol>
+<blockquote>
+<p>Now we can start to deploy the Prometheus server:</p>
+</blockquote>
+<ol>
+<li>
+<p>Create a ConfigMap, which should be consumed from the Prometheus server (manifest file can be found under the <strong>session4/prometheus/</strong> folder in the GitHub)</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Contains the configurations for the endpoint from which the metrics are to be obtained (<em>python-app</em>) and, for example, the intervals at which the metrics are to be scraped</p>
+</div>
+</li>
+<li>
+<p>Create an imagestream, which refers to an <strong>Prometheus</strong> image from <a href="https://quay.io/repository/prometheus/prometheus">Quay.io</a></p>
+<p><img alt="Prometheus ImageStream" src="../images/session4/prometheus-imagestream.png" /></p>
+</li>
+<li>
+<p>Create a Deployment which uses the <em>image</em> from the newly created <strong>ImageStream</strong> </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>use the <strong>deployment.yml</strong> template, which can be found in the session4/prometheus folder on GitHub</p>
+</div>
+</li>
+<li>
+<p>Create a Service and a Route for the <em>Prometheus server</em> to acces it:</p>
+<p><img alt="Prometheus" src="../images/session4/prometheus.png" /></p>
+</li>
+<li>
+<p>Verify that the <em>Prometheus</em> is scraping data from the <em>python-app</em>. In the <em>Prometheus</em> UI click on <em>Status</em> and then on <em>Target health</em>: </p>
+<p><img alt="Scraping data from python-app" src="../images/session4/Scraping_python.png" /></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Oriana Schwickrath 2025
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/oriana-schwickrath-03a906200/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "search.suggest", "search.highlight", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight", "content.code.annotation"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

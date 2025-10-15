@@ -1,0 +1,1048 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://trainings.com/Session1/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../Session2/">
+      
+      
+      <link rel="icon" href="../assets/images/openshift_logo.jpeg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Session 1 - OpenShift Training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1%207.775V2.75C1%201.784%201.784%201%202.75%201h5.025c.464%200%20.91.184%201.238.513l6.25%206.25a1.75%201.75%200%200%201%200%202.474l-5.026%205.026a1.75%201.75%200%200%201-2.474%200l-6.25-6.25A1.75%201.75%200%200%201%201%207.775m1.5%200c0%20.066.026.13.073.177l6.25%206.25a.25.25%200%200%200%20.354%200l5.025-5.025a.25.25%200%200%200%200-.354l-6.25-6.25a.25.25%200%200%200-.177-.073H2.75a.25.25%200%200%200-.25.25ZM6%205a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Merriweather Sans";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#use-case-e-commerce-boutque-store" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OpenShift Training" class="md-header__button md-logo" aria-label="OpenShift Training" data-md-component="logo">
+      
+  <img src="../assets/images/openshift_logo.jpeg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OpenShift Training
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Session 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="teal"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session2/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 2
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session3/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 3
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session4/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 4
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session5/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 5
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session6/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 6
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Session7/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session 7
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OpenShift Training" class="md-nav__button md-logo" aria-label="OpenShift Training" data-md-component="logo">
+      
+  <img src="../assets/images/openshift_logo.jpeg" alt="logo">
+
+    </a>
+    OpenShift Training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Session 1
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 1
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microservices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session 7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="use-case-e-commerce-boutque-store">Use Case: E-Commerce Boutque Store</h1>
+<p>In this Hands-On-Labs, we deploy an <em>e-commerce application</em>, which is based on the <a href="https://github.com/GoogleCloudPlatform/microservices-demo">Online Boutique</a>, provided by <a href="https://github.com/GoogleCloudPlatform">Google Cloud Platform</a>. </p>
+<p>The deployment manifests are modified so that they could be deployed on an OpenShift Cluster. The User Interface of <strong>"Online Boutique"</strong> looks like this:</p>
+<p><img alt="Online Boutique Interface" src="../images/boutique_interface.png" /></p>
+<h3 id="architecture">Architecture</h3>
+<p>On the main page of the Online Boutique, a frontend service forwards the requests to the 10 corresponding backend services, as shown in this architectur image: </p>
+<p><img alt="Architecture of microservices" src="../images/architecture-diagram.png" /></p>
+<p>All these 11 microservices are communicating over gRPC protocol. </p>
+<h3 id="microservices">Microservices</h3>
+<p>These 11 microservices are written in different programming languages and are responsible for a specific task in this e-commerce website:</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Language</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>frontend</td>
+<td>Go</td>
+<td>Exposes an HTTP server to serve the website. Does not require signup/login and generates session IDs for all users automatically.</td>
+</tr>
+<tr>
+<td>cartservice</td>
+<td>C#</td>
+<td>Stores the items in the user's shopping cart in Redis and retrieves it.</td>
+</tr>
+<tr>
+<td>productcatalogservice</td>
+<td>Go</td>
+<td>Provides the list of products from a JSON file and ability to search products and get individual products.</td>
+</tr>
+<tr>
+<td>currencyservice</td>
+<td>Node.js</td>
+<td>Converts one money amount to another currency. Uses real values fetched from European Central Bank. It's the highest QPS service.</td>
+</tr>
+<tr>
+<td>paymentservice</td>
+<td>Node.js</td>
+<td>Charges the given credit card info (mock) with the given amount and returns a transaction ID.</td>
+</tr>
+<tr>
+<td>shippingservice</td>
+<td>Go</td>
+<td>Gives shipping cost estimates based on the shopping cart. Ships items to the given address (mock)</td>
+</tr>
+<tr>
+<td>emailservice</td>
+<td>Python</td>
+<td>Sends users an order confirmation email (mock).</td>
+</tr>
+<tr>
+<td>checkoutservice</td>
+<td>Go</td>
+<td>Retrieves user cart, prepares order and orchestrates the payment, shipping and the email notification.</td>
+</tr>
+<tr>
+<td>recommendationservice</td>
+<td>Python</td>
+<td>Recommends other products based on what's given in the cart.</td>
+</tr>
+<tr>
+<td>adservice</td>
+<td>Java</td>
+<td>Provides text ads based on given context words.</td>
+</tr>
+<tr>
+<td>loadgenerator</td>
+<td>Python/Locust</td>
+<td>Continuously sends requests imitating realistic user shopping flows to the frontend.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Ensure that you have access to a <strong>OpenShift Cluster</strong> to deploy the manifests for the e-commerce application. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you do not already have access to a Demo Cluster, ask your training instructor! Or create a Demo Cluster by yourself via the following link: <a href="https://catalog.partner.demo.redhat.com/catalog">Red Hat Demo Cluster</a></p>
+</div>
+<hr />
+<h1 id="lets-get-started-with-the-first-hands-on-session">Lets get started with the first Hands-On Session</h1>
+<h1 id="1-hands-on-lab">1. Hands-On Lab</h1>
+<h2 id="tasks">Tasks</h2>
+<h3 id="task-1-deployment">Task 1: Deployment</h3>
+<ol>
+<li>
+<p>Create your own Namespace (like your own project)</p>
+<p><img alt="Create Project" src="../images/create_project.png" /></p>
+</li>
+<li>
+<p>Create the frontend Deployment by importing the yaml template</p>
+<ol>
+<li>Go to the <a href="https://github.com/anairo98/openshift-training/tree/main">Github Repository</a> and navigate over the <strong>e-commerce</strong> folder to the <strong>frontend</strong> folder and then to the <strong>deployment.yml</strong> </li>
+<li>Copy the content of the <strong>deployment.yml</strong> </li>
+<li>
+<p>Switch to the Openshift Console and paste the content into the <em>Import Yaml</em> field</p>
+<p><img alt="Import YAML" src="../images/import_yml.png" /></p>
+</li>
+<li>
+<p>Click on <strong>Create</strong> and you will create the <em>frontend</em> deployment</p>
+</li>
+<li>
+<p>Go to <strong>Topology</strong> in Openshift Console and check on your newly created Pod</p>
+<p><img alt="Issue with Frontend" src="../images/frontend_not_running.png" /></p>
+</li>
+</ol>
+</li>
+<li>
+<p>There is some problem with your Pod, it is not running! Find out what the problem is about!?</p>
+<div class="admonition note">
+<p class="admonition-title">Do you need help?</p>
+<p>If you cannot solve the problem, switch to the <strong>Solutions for Troubleshooting</strong> chapter on this website (scroll down <img alt="😉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f609.svg" title=":winking_face:" />) </p>
+</div>
+</li>
+<li>
+<p>When you fixed the Problem, you maybe need to scale down and after that scale up your Pod again (so the changes are getting activated):</p>
+<p><img alt="Scale Frontend" src="../images/scale_frontend.png" /></p>
+</li>
+<li>
+<p>Give it a moment and wait until the Pod is running!</p>
+<p><img alt="Running Frontend" src="../images/running_frontend.png" /></p>
+</li>
+</ol>
+<hr />
+<h3 id="task-2-services">Task 2: Services</h3>
+<ol>
+<li>Create a Service, which abstracts the <em>frontend</em> Deployment</li>
+<li>
+<p>Go to the <strong>Administrator</strong> view and search for <strong>services</strong> under the <strong>Networking</strong> section</p>
+<p><img alt="Services" src="../images/services.png" /></p>
+</li>
+<li>
+<p>Click on <strong>Create Service</strong> button</p>
+</li>
+<li>
+<p>Enter all necessary information</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are unsure how to enter it, have a look at the following Yaml file: </p>
+</div>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="err"> </span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="err"> </span><span class="w"> </span><span class="nt">labels</span><span class="p">:</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="err">   </span><span class="w"> </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">spec</span><span class="p">:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="err"> </span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="err"> </span><span class="w"> </span><span class="nt">selector</span><span class="p">:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="err">   </span><span class="w"> </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="err"> </span><span class="w"> </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="err"> </span><span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="err">   </span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="err">   </span><span class="w"> </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Verify if the Service is linked to the prior created <em>frontend</em> Pod </p>
+<ol>
+<li>Click on the <em>frontend</em> Service</li>
+<li>
+<p>Click on the <em>Pods</em> section:</p>
+<p><img alt="Service Pod" src="../images/service_pod.png" /></p>
+</li>
+<li>
+<p>You can also verify by going back to the <strong>Topology</strong> section and click on the <em>frontend</em> Pod. There is now under the <strong>Resources</strong> section also the <em>frontend</em> Service linked</p>
+<p><img alt="Service Pod 2" src="../images/service_pod2.png" /></p>
+</li>
+</ol>
+</li>
+</ol>
+<hr />
+<h3 id="task-3-routing">Task 3: Routing</h3>
+<p>Create a Route by using the OpenShift UI  (not by using the manifest files given in the Github)</p>
+<ol>
+<li>
+<p>Go to <strong>Administrator</strong> view and click on <strong>Routes</strong> under the <strong>Networking</strong> section and click on the <strong>Create Route</strong> button</p>
+<p><img alt="Create Route" src="../images/create_route.png" /></p>
+</li>
+<li>
+<p>Give the Route a name: <em>frontend</em></p>
+</li>
+<li>Select the correct <em>frontend</em> Service, which we created in <strong>Task 2</strong></li>
+<li>
+<p>Select the correct <em>Port</em> (Service Port) <img alt="➡" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/27a1.svg" title=":right_arrow:" /> <em>TargetPort</em> (Port on the Container)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only fill out the fields which are necessary (marked with a red asterisk)</p>
+</div>
+</li>
+<li>
+<p>Click on <strong>Create</strong> to create the service </p>
+<p><img alt="Create" src="../images/create.png" /></p>
+</li>
+<li>
+<p>Give it a second <img alt="⏱" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/23f1.svg" title=":stopwatch:" /></p>
+</li>
+<li>
+<p>verify the Route: Go back to the <strong>Topology</strong> and click on the Route sign on the right hand side of the Pod </p>
+<p><img alt="Verify Route" src="../images/verify_route.png" /></p>
+</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>You will see that the frontend is loading but you get an <em>500 Internal Server Error</em> if you open the website. The <em>Internal Server Error</em> occurs, because you only have the frontend deployed and all of the backend is still missing. 
+So don't worry, we will do this together step by step!</p>
+</div>
+<p><img alt="Internal Server Error" src="../images/internal_server_error.png" /></p>
+<hr />
+<h3 id="task-4-scaling">Task 4: Scaling</h3>
+<p>Scaling the Pod</p>
+<ol>
+<li>
+<p>Scale down the Pod to zero </p>
+<p><img alt="Scale Down" src="../images/scale_down.png" /></p>
+</li>
+<li>
+<p>Check the Route (Link) to the website - The website should not be reachable</p>
+<p><img alt="App not available" src="../images/app_not_available.png" /></p>
+</li>
+<li>
+<p>Scale the Pod up again and verify the link to the website </p>
+</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The frontend should be reachable again</p>
+</div>
+<hr />
+<h3 id="task-5-microservices-architecture">Task 5: Microservices-Architecture</h3>
+<p>Create a Microservice Architecture by creating multiple other deployments and connect those by connecting the services</p>
+<ol>
+<li>Go into the <a href="https://github.com/anairo98/openshift-training/tree/main/e-commerce">Github Repository</a></li>
+<li>Lets start with the <em>Ad-Service</em>. You can find the Yaml files under the folder <strong>adservice</strong></li>
+<li>Start with the <em>serviceaccount.yml</em></li>
+<li>Go to the OpenShift Console and navigate to <strong>Administrator</strong> - <strong>User Management</strong> - <strong>ServiceAccounts</strong> </li>
+<li>Create a Service Account with the name: <em>adservice</em> in your created namespace (of Task 1)</li>
+<li>Now it is time to create the Deployment, copy the <em>deployment.yml</em> of the <em>adservice</em> from the GitHub Repository</li>
+<li>Go back to the OpenShift Console and navigate to: <strong>Administrator</strong> - <strong>Workloads</strong> - <strong>Deployments</strong></li>
+<li>Click on <strong>Create Deployment</strong> </li>
+<li>
+<p>Click on <strong>YAML view</strong>, delete the default content and paste inside your copied <em>deployment.yml</em></p>
+<p><img alt="Deployment via Yaml" src="../images/deployment_via_yaml.png" /></p>
+</li>
+<li>
+<p>Lastly, create the regarding Service of the <em>adservice</em> Deployment</p>
+</li>
+<li>Copy the <em>service.yml</em> from the <strong>adservice</strong> folder of the GitHub Repository and switch back to the OpenShift Console</li>
+<li>
+<p>Create the service in OpenShift by using the <em>service.yml</em> like we did with the <em>deployment.yml</em> of the <strong>adservice</strong> </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>You can verify, if you go to the <strong>Topology</strong> and check if your Pod named <em>adservice</em> with the expecting Service is present</p>
+</div>
+</li>
+<li>
+<p>Now create the <em>cartservice</em>, the <em>checkoutservice</em> and the <em>currencyservice</em> by your own</p>
+</li>
+</ol>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>For the three other microservices you can use the whole <em>manifest.yml</em> file and create the whole microservices (including ServiceAccount, Deployment and Service) all at once. For that navigate to <strong>Developer</strong> - <strong>+Add</strong> - <strong>Import YAML</strong> and paste in the whole manifest file. This saves time <img alt="🚀" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f680.svg" title=":rocket:" /> </p>
+</div>
+<p><img alt="Import Manifest File" src="../images/import_manifest.png" /></p>
+<h2 id="solutions-for-troubleshooting">Solutions for Troubleshooting</h2>
+<h3 id="solution-of-task-1">Solution of Task 1</h3>
+<p>Frontend Pod was not created, but why?!</p>
+<ol>
+<li>
+<p>Check the Error message</p>
+<p><img alt="Frontend Not Running" src="../images/frontend_not_running.png" /></p>
+</li>
+<li>
+<p>Go to the <strong>Deployments</strong> (<em>Hint</em>: you can find it, if you switch to the <strong>Administrator</strong> and under <strong>Workloads</strong>)</p>
+</li>
+<li>
+<p>Check the <strong>ReplicaSet</strong> of the <em>frontend</em> Deployment </p>
+<p><img alt="RepliaSet" src="../images/replicaset_frontend.png" /></p>
+</li>
+<li>
+<p>Check the <strong>Events</strong> of the <em>Replicaset</em></p>
+<p><img alt="Events ReplicaSet" src="../images/replicaset_events.png" /></p>
+</li>
+<li>
+<p>You got it! You are missing the expected <em>Service Account</em></p>
+</li>
+<li>
+<p>Create the missing <em>frontend</em> Service Account</p>
+<p><img alt="Service Account" src="../images/create_serviceaccount.png" /></p>
+</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>As you can see there are already three Service Accounts. These serviceaccounts are the default Service Accounts. But for our created <em>frontend</em> deployment we do not want to use one of the default once. </p>
+</div>
+<p><img alt="Create SA" src="../images/create_serviceaccount2.png" /></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It is important that you name the Service Account exactly as mentioned in you Deployment.yml file</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Oriana Schwickrath 2025
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/oriana-schwickrath-03a906200/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "search.suggest", "search.highlight", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.highlight", "content.code.annotation"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
